@@ -37,7 +37,7 @@ export const HeroSection = () => {
                     width={1277}
                     height={370}
                     quality={100}
-                    className="w-full h-auto rounded-br-[20px] rounded-bl-[20px] rounded-tr-[20px]"
+                    className="w-full h-auto -translate-y-1/4 py-4"
                 />
             </div>
           </div>

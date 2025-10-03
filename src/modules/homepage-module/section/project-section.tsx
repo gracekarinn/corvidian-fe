@@ -1,5 +1,9 @@
-
+import { ProjectDesktop } from "../components/project/project-desktop";
 
 export const ProjectSection = () => {
-  return <section></section>;
+  return (
+    <section>
+      <ProjectDesktop />
+    </section>
+  );
 }

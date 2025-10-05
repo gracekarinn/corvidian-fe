@@ -77,15 +77,15 @@ export const DesktopCard = () => {
           />
           <div className="px-8 max-lg:px-6 flex flex-col justify-between flex-grow -translate-y-16 max-lg:-translate-y-4">
             <div>
-              <h3 className="text-white font-extrabold text-2xl lg:text-xl mb-4 max-lg:text-sm">
+              <h3 className="text-white font-extrabold text-2xl mb-4 max-lg:text-sm max-xl:text-xl">
                 Tidak punya <br className="2xl:block hidden" /> waktu & budget{" "}
                 <br /> buat bangun sistem dari nol?
               </h3>
-              <p className="text-white font-normal text-sm 2xl:text-md mb-8 max-lg:text-[10px]">
+              <p className="text-white font-normal text-sm 2xl:text-md xl:mb-10 2xl:mb-5 max-lg:text-[10px]">
                 Co-Pilot siap digunakan dalam hitungan minggu, bukan bulan.
               </p>
             </div>
-            <p className="text-white font-bold text-md underline text-left cursor-pointer lg:pt-11 xl:pt-3 max-lg:text-[10px] max-lg:mb-4">
+            <p className="text-white font-bold text-md underline text-left cursor-pointer max-xl:pt-18 max-lg:pt-11 xl:pt-3 max-lg:text-[10px] max-lg:mb-4">
               Pelajari lebih lanjut
             </p>
           </div>

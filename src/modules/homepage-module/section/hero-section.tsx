@@ -28,7 +28,7 @@ export const HeroSection = () => {
                 <Button
                   asChild
                   size="lg"
-                  className="bg-corvidian-2 hover:bg-corvidian-5 text-white hover:text-corvidian-1 font-bold md:my-4 max-md:-translate-y-5 relative z-50 cursor-pointer max-md:mt-8 max-md:max-w-[151px] max-[350px]:!max-w-[130px] max-[350px]:!text-[12px] max-[350px]:!my-10"
+                  className="bg-corvidian-2 hover:bg-corvidian-5 z-10 text-white hover:text-corvidian-1 font-bold md:my-4 max-md:-translate-y-5 relative cursor-pointer max-md:mt-8 max-md:max-w-[151px] max-[350px]:!max-w-[130px] max-[350px]:!text-[12px] max-[350px]:!my-10"
                 >
                   <Link href="/konsultasi">Konsultasi Gratis</Link>
                 </Button>
@@ -75,7 +75,7 @@ export const HeroSection = () => {
                   width={304}
                   height={296}
                   quality={100}
-                  className="absolute right-40 bottom-0 object-contain z-40 xl:translate-y-16"
+                  className="absolute right-40 bottom-0 object-contain z-30 xl:translate-y-16"
                 />
               </GradientBar>
 

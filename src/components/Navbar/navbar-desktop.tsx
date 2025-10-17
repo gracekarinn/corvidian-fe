@@ -101,10 +101,10 @@ export const NavbarDesktop = () => {
                 activeDropdown === "wawasan" ? "text-corvidian-3" : ""
               }`}
             >
-              Wawasan
+              Wawasan              
             </button>
             <Link
-              href="#tentang-kami"
+              href="/tentang-kami"
               className="hover:text-white transition-all duration-300"
               onClick={() => setActiveDropdown(null)}
             >

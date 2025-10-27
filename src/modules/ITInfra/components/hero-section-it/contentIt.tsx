@@ -1,6 +1,9 @@
 "use client"
 import React, { useState } from 'react'
+import { Button } from "@/components/ui/button";
+
 import Image from 'next/image'
+import Link from 'next/link'
 
 const ContentIt = () => {
   // Separate state for each main section
@@ -110,28 +113,13 @@ const ContentIt = () => {
                     <li>Layanan cloud dan hybrid cloud</li>
                   </ul>
                   {/* New Button - Improved gradient border button */}
-                  <div className="mt-4 flex justify-end">
-                    <div className="relative inline-block">
-                      {/* Gradient border container */}
-                      <div 
-                        className="absolute inset-0 rounded-full" 
-                        style={{ 
-                          background: `linear-gradient(90deg, #1578CB 0%, #1D1F26 50%, #02C2B3 100%)`,
-                          padding: '2px', // Border thickness
-                        }}
-                      ></div>
-                      
-                      {/* Button content */}
-                      <a 
-                        href="/konsultasi"
-                        className="relative z-10 inline-flex items-center justify-center px-8 py-3 font-bold text-[#1D1F26] bg-white rounded-full"
-                      >
-                        Konsultasi Gratis
-                      </a>
-                    </div>
+                  <div className="h-[40px] w-[130px] rounded-4xl flex items-center justify-center" style={{background:"linear-gradient(to right, #02C2B3, #1D1F26, #1D1F26, #1578CB)"}}>
+                    <Button variant="outline" size="sm" className=" text-[12px] text-black font-bold w-fit rounded-2xl">
+                      <Link href='/it-infrastructure' className='pointer'>Konsultasi Gratis</Link>
+                    </Button>
                   </div>
                 </div>
-              )}
+                )}
               
               {/* FAQ section */}
               <div className="bg-[#C5CED5] shadow-xl w-[1110px] ml-[105px] h-[60px] flex items-center mt-2">
@@ -170,15 +158,15 @@ const ContentIt = () => {
                     <h3 className="font-bold text-sm mb-2">Apakah layanan maintenance termasuk dalam paket?</h3>
                     <p className="text-sm">Ya, kami menyediakan layanan maintenance sebagai bagian dari kontrak layanan berkelanjutan.</p>
                   </div>
-                  <button className=' w-[180px] h-[44px] bg-gradient-to-r from-[#1578CB] via-[#1D1F26] to-[#02C2B3] rounded-2xl justify-center'>
-                    <p className="ml-[10px] w-[90%] h-[90%] p-[10px] bg-white text-black rounded-2xl">
-                      Konsultasi Gratis
-                    </p>
-                  </button>
+                  <div className="h-[40px] w-[130px] rounded-4xl flex items-center justify-center" style={{background:"linear-gradient(to right, #02C2B3, #1D1F26, #1D1F26, #1578CB)"}}>
+                    <Button variant="outline" size="sm" className=" text-[12px] text-black font-bold w-fit rounded-2xl">
+                      <Link href='/it-infrastructure' className='pointer'>Konsultasi Gratis</Link>
+                    </Button>
+                  </div>
                 </div>
               )}
             </div>
-          )}
+          )}    
         </div>
 
         {/* Section 2: Security & Data Protection */}
@@ -245,13 +233,18 @@ const ContentIt = () => {
                     Kami menyediakan solusi keamanan komprehensif untuk melindungi aset digital Anda dari ancaman cyber. 
                     Dengan meningkatnya serangan siber, melindungi data dan infrastruktur menjadi prioritas utama.
                   </p>
-                  <ul className="list-disc pl-5 mt-4 text-sm lg:text-base text-corvidian-1">
+                  <ul className="list-disc pl-5 mt-4 mb-4 text-sm lg:text-base text-corvidian-1">
                     <li className="mb-2">Penilaian risiko keamanan dan audit</li>
                     <li className="mb-2">Implementasi firewall dan solusi anti-malware</li>
                     <li className="mb-2">Enkripsi data dan manajemen identitas</li>
                     <li className="mb-2">Deteksi intrusi dan monitoring keamanan 24/7</li>
                     <li>Perencanaan pemulihan bencana dan kontinuitas bisnis</li>
                   </ul>
+                  <div className="h-[40px] w-[130px] rounded-4xl flex items-center justify-center" style={{background:"linear-gradient(to right, #02C2B3, #1D1F26, #1D1F26, #1578CB)"}}>
+                    <Button variant="outline" size="sm" className=" text-[12px] text-black font-bold w-fit rounded-2xl">
+                      <Link href='/it-infrastructure' className='pointer'>Konsultasi Gratis</Link>
+                    </Button>
+                  </div>
                 </div>
               )}
               
@@ -291,6 +284,11 @@ const ContentIt = () => {
                   <div className="mb-4">
                     <h3 className="font-bold text-sm mb-2">Apa standar keamanan yang Anda terapkan?</h3>
                     <p className="text-sm">Kami mengikuti standar industri seperti ISO 27001, NIST, dan praktik terbaik keamanan siber terkini.</p>
+                  </div>
+                  <div className="h-[40px] w-[130px] rounded-4xl flex items-center justify-center" style={{background:"linear-gradient(to right, #02C2B3, #1D1F26, #1D1F26, #1578CB)"}}>
+                    <Button variant="outline" size="sm" className=" text-[12px] text-black font-bold w-fit rounded-2xl">
+                      <Link href='/it-infrastructure' className='pointer'>Konsultasi Gratis</Link>
+                    </Button>
                   </div>
                 </div>
               )}
@@ -362,13 +360,18 @@ const ContentIt = () => {
                     Tim operasional kami menyediakan dukungan teknis berkelanjutan dan layanan pengelolaan untuk memastikan 
                     sistem IT Anda berjalan dengan lancar.
                   </p>
-                  <ul className="list-disc pl-5 mt-4 text-sm lg:text-base text-corvidian-1">
+                  <ul className="list-disc pl-5 mt-4 mb-4 text-sm lg:text-base text-corvidian-1">
                     <li className="mb-2">Help desk dan dukungan pengguna akhir</li>
                     <li className="mb-2">Pemeliharaan sistem dan pemecahan masalah</li>
                     <li className="mb-2">Manajemen patch dan pembaruan software</li>
                     <li className="mb-2">Monitoring performa dan pelaporan</li>
                     <li>Layanan TI terkelola dan konsultasi strategis</li>
                   </ul>
+                  <div className="h-[40px] w-[130px] rounded-4xl flex items-center justify-center" style={{background:"linear-gradient(to right, #02C2B3, #1D1F26, #1D1F26, #1578CB)"}}>
+                    <Button variant="outline" size="sm" className=" text-[12px] text-black font-bold w-fit rounded-2xl">
+                      <Link href='/it-infrastructure' className='pointer'>Konsultasi Gratis</Link>
+                    </Button>
+                  </div>
                 </div>
               )}
               
@@ -409,6 +412,11 @@ const ContentIt = () => {
                     <h3 className="font-bold text-sm mb-2">Berapa lama waktu respon untuk masalah kritis?</h3>
                     <p className="text-sm">Masalah kritis memiliki waktu respon awal kurang dari 15 menit dan penanganan prioritas.</p>
                   </div>
+                  <div className="h-[40px] w-[130px] rounded-4xl flex items-center justify-center" style={{background:"linear-gradient(to right, #02C2B3, #1D1F26, #1D1F26, #1578CB)"}}>
+                    <Button variant="outline" size="sm" className=" text-[12px] text-black font-bold w-fit rounded-2xl">
+                      <Link href='/it-infrastructure' className='pointer'>Konsultasi Gratis</Link>
+                    </Button>
+                  </div>                  
                 </div>
               )}
             </div>

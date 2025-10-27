@@ -73,7 +73,6 @@ const PortofolioTemplate: React.FC<PortofolioTemplateProps> = ({
             style={{
               backgroundImage: 'url(/tentangkami/shape.png)', 
               backgroundSize: 'cover', 
-              backgroundPosition: 'center', 
               height: '550.84px'
             }}
           >

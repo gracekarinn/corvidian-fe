@@ -1,9 +1,24 @@
+ "use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { GradientBar } from "../components/hero/gradient-bar";
 import Image from "next/image";
+import { MouseEvent } from "react";
 
 export const HeroSection = () => {
+  const scrollToConsultation = (
+    event: MouseEvent<HTMLAnchorElement>
+  ) => {
+    event.preventDefault();
+    const target = document.getElementById("konsultasi");
+
+    target?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+  };
+
   return (
     <section>
       <div className="lg:bg-white max-sm:bg-[#F4F4F4] max-sm:rounded-b-[40px] max-sm:max-h-[460px]">
@@ -30,7 +45,13 @@ export const HeroSection = () => {
                   size="lg"
                   className="bg-corvidian-2 hover:bg-corvidian-5 z-10 text-white hover:text-corvidian-1 font-bold md:my-4 max-md:-translate-y-5 relative cursor-pointer max-md:mt-8 max-md:max-w-[151px] max-[350px]:!max-w-[130px] max-[350px]:!text-[12px] max-[350px]:!my-10"
                 >
-                  <Link href="/konsultasi">Konsultasi Gratis</Link>
+                  <Link
+                    href="#konsultasi"
+                    scroll={false}
+                    onClick={scrollToConsultation}
+                  >
+                    Konsultasi Gratis
+                  </Link>
                 </Button>
               </div>
               <div className="max-sm:block hidden">

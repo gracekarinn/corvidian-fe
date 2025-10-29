@@ -29,7 +29,6 @@ const ConsultationSchedule = () => {
       author: "~Sugianto",
       position: "Managing Partner MUC Consulting"
     }
-    // Additional testimonials can be added here
   ];
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -42,16 +41,15 @@ const ConsultationSchedule = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission logic here
     console.log('Form submitted:', formData);
   };
 
   return (
-    <div className='relative w-full max-w-[1388px] mx-auto'>
-      {/* Form Section - 500px width */}
-      <div className='absolute left-[120px] w-[500px]'>
-        {/* Section Title */}
-        <div className='mb-[20px]'>
+    <div
+      className="relative w-full max-w-[1388px] mx-auto"
+    >
+      <div className="absolute left-[120px] w-[500px]">
+        <div className="mb-[20px]">
           <h2 className='font-["Plus_Jakarta_Sans"] font-extrabold text-[33px] leading-[100%] text-[#1D1F26] mb-[10px]'>
             Jadwalkan Konsultasi Gratis
           </h2>
@@ -61,9 +59,9 @@ const ConsultationSchedule = () => {
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className='space-y-[30px]'>
+        <form onSubmit={handleSubmit} className="space-y-[30px]">
           {/* Name Field */}
-          <div className='relative'>
+          <div className="relative">
             <input
               type="text"
               name="name"
@@ -75,8 +73,7 @@ const ConsultationSchedule = () => {
             />
           </div>
 
-          {/* Email Field */}
-          <div className='relative'>
+          <div className="relative">
             <input
               type="email"
               name="email"
@@ -88,8 +85,7 @@ const ConsultationSchedule = () => {
             />
           </div>
 
-          {/* Phone Field */}
-          <div className='relative'>
+          <div className="relative">
             <input
               type="tel"
               name="phone"
@@ -101,8 +97,7 @@ const ConsultationSchedule = () => {
             />
           </div>
 
-          {/* Company Field */}
-          <div className='relative'>
+          <div className="relative">
             <input
               type="text"
               name="company"
@@ -114,8 +109,7 @@ const ConsultationSchedule = () => {
             />
           </div>
 
-          {/* Question Field */}
-          <div className='relative'>
+          <div className="relative">
             <textarea
               name="question"
               placeholder="Pertanyaan*"
@@ -127,26 +121,25 @@ const ConsultationSchedule = () => {
             />
           </div>
 
-          {/* Checkbox */}
-          <div className='flex items-start gap-[10px] mt-[20px]'>
+          <div className="flex items-start gap-[10px] mt-[20px]">
             <input
               type="checkbox"
               name="agreement"
               checked={formData.agreement}
               onChange={handleInputChange}
               required
-              className='mt-[2px] w-[16px] h-[16px] accent-[#02C2B3]'
+              className="mt-[2px] w-[16px] h-[16px] accent-[#02C2B3]"
             />
             <label className='font-["Plus_Jakarta_Sans"] font-normal text-[14px] leading-[100%] text-[#1D1F26]'>
-              Dengan mengirimkan formulir ini, saya setuju untuk menerima email dari Corvidian*
+              Dengan mengirimkan formulir ini, saya setuju untuk menerima email
+              dari Corvidian*
             </label>
           </div>
 
-          {/* Submit Button */}
-          <div className='mt-[30px]'>
-            <button 
+          <div className="mt-[30px]">
+            <button
               type="submit"
-              className='w-[221px] h-[44px] bg-[#1578CB] rounded-[7px] flex items-center justify-center hover:bg-[#1568BB] transition-colors duration-200'
+              className="w-[221px] h-[44px] bg-[#1578CB] rounded-[7px] flex items-center justify-center hover:bg-[#1568BB] transition-colors duration-200"
             >
               <span className='font-["Plus_Jakarta_Sans"] font-bold text-[18px] text-[#F4F4F4]'>
                 Kirim
@@ -156,34 +149,28 @@ const ConsultationSchedule = () => {
         </form>
       </div>
 
-      {/* Feedback Section with Trapezoid Background */}
-      <div className='absolute left-[650px] w-[738px] h-[561px] overflow-hidden'>
-        {/* Trapezoid Background */}
-        <div 
-          className='w-[738px] h-[561px] bg-[#1D1F26] relative '
+      <div className="absolute left-[650px] w-[738px] h-[561px] overflow-hidden">
+        <div
+          className="w-[738px] h-[561px] bg-[#1D1F26] relative "
           style={{
-            clipPath: 'polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%)'
+            clipPath: "polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%)",
           }}
         >
-          {/* Title */}
-          <div className='absolute top-[50px] left-[140px] right-[40px]'>
+          <div className="absolute top-[50px] left-[140px] right-[40px]">
             <h3 className='font-["Plus_Jakarta_Sans"] font-extrabold text-[28px] leading-[100%] text-[#F4F4F4]'>
               Apa kata mereka tentang service Corvidian
             </h3>
           </div>
 
-          {/* Testimonial Content */}
-          <div className='absolute top-[140px] left-[140px] right-[40px] bottom-[80px]'>
-            <div className='h-full flex flex-col justify-between'>
-              {/* Testimonial Text */}
-              <div className='flex-1 pr-[20px]'>
+          <div className="absolute top-[140px] left-[140px] right-[40px] bottom-[80px]">
+            <div className="h-full flex flex-col justify-between">
+              <div className="flex-1 pr-[20px]">
                 <p className='font-["Plus_Jakarta_Sans"] font-normal text-[16px] leading-[150%] text-[#F4F4F4] mb-[30px]'>
                   {testimonials[currentTestimonial].text}
                 </p>
               </div>
 
-              {/* Author */}
-              <div className='mb-[40px]'>
+              <div className="mb-[40px]">
                 <p className='font-["Plus_Jakarta_Sans"] font-normal text-[14px] text-[#F4F4F4] italic'>
                   {testimonials[currentTestimonial].author}
                 </p>
@@ -192,22 +179,22 @@ const ConsultationSchedule = () => {
                 </p>
               </div>
 
-              {/* Carousel Dots */}
-              <div className='flex justify-center gap-[8px] pr-[100px]'>
+              <div className="flex justify-center gap-[8px] pr-[100px]">
                 {testimonials.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentTestimonial(index)}
                     className={`w-[10px] h-[10px] rounded-full transition-colors duration-200 ${
-                      index === currentTestimonial ? 'bg-[#02C2B3]' : 'bg-[#C5CED5]'
+                      index === currentTestimonial
+                        ? "bg-[#02C2B3]"
+                        : "bg-[#C5CED5]"
                     }`}
                   />
                 ))}
-                {/* Additional inactive dots for visual effect */}
                 {Array.from({ length: 7 }, (_, index) => (
                   <div
                     key={`extra-${index}`}
-                    className='w-[10px] h-[10px] rounded-full bg-[#C5CED5]'
+                    className="w-[10px] h-[10px] rounded-full bg-[#C5CED5]"
                   />
                 ))}
               </div>
@@ -216,7 +203,7 @@ const ConsultationSchedule = () => {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default ConsultationSchedule

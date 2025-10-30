@@ -1,233 +1,279 @@
-"use client"
-import React, { useState } from 'react'
-import Image from 'next/image';
+"use client";
+import { useState } from "react";
+import Image from "next/image";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormControl,
+  FormMessage,
+  FormLabel,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
-const ConsultationSchedule = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    question: '',
-    agreement: false
+const schema = z.object({
+  name: z.string().min(1),
+  email: z.string().email(),
+  phone: z.string().min(1),
+  company: z.string().min(1),
+  question: z.string().min(1),
+  agreement: z.boolean().refine((v) => v === true),
+});
+
+type FormValues = z.infer<typeof schema>;
+
+export default function ConsultationSchedule() {
+  const [loading, setLoading] = useState(false);
+
+  const form = useForm<FormValues>({
+    resolver: zodResolver(schema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      company: "",
+      question: "",
+      agreement: false,
+    },
   });
 
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const onSubmit = async (values: FormValues) => {
+    setLoading(true);
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/consultation/submit/`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(values),
+        }
+      );
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        toast.error(data.error || "Terjadi kesalahan");
+        return;
+      }
+
+      toast.success("Berhasil, kami akan menghubungi anda segera");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const testimonials = [
     {
       text: "Sebelum bekerja sama dengan Corvidian, banyak proses di MUC yang berjalan kurang efisien. Beberapa pekerjaan memerlukan waktu lebih lama karena sistem yang ada belum terintegrasi dengan baik. Setelah Corvidian hadir, semuanya berubah. Mereka memahami kebutuhan kami secara mendalam, merancang solusi yang tepat, dan memastikan setiap detail berjalan sesuai rencana. Hasilnya, koordinasi tim menjadi lebih lancar, pekerjaan lebih cepat terselesaikan, dan kinerja perusahaan meningkat signifikan. Corvidian bukan hanya penyedia teknologi, tetapi mitra strategis yang membantu kami bergerak maju.",
       author: "~Sugianto",
-      position: "Managing Partner MUC Consulting"
+      position: "Managing Partner MUC Consulting",
     },
-     {
+    {
       text: "Sebelum bekerja sama dengan Corvidian, banyak proses di MUC yang berjalan kurang efisien. Beberapa pekerjaan memerlukan waktu lebih lama karena sistem yang ada belum terintegrasi dengan baik. Setelah Corvidian hadir, semuanya berubah. Mereka memahami kebutuhan kami secara mendalam, merancang solusi yang tepat, dan memastikan setiap detail berjalan sesuai rencana. Hasilnya, koordinasi tim menjadi lebih lancar, pekerjaan lebih cepat terselesaikan, dan kinerja perusahaan meningkat signifikan. Corvidian bukan hanya penyedia teknologi, tetapi mitra strategis yang membantu kami bergerak maju.",
       author: "~Sugianto",
-      position: "Managing Consulting"
+      position: "Managing Consulting",
     },
-     {
+    {
       text: "Sebelum bekerja sama dengan Corvidian, banyak proses di MUC yang berjalan kurang efisien. Beberapa pekerjaan memerlukan waktu lebih lama karena sistem yang ada belum terintegrasi dengan baik. Setelah Corvidian hadir, semuanya berubah. Mereka memahami kebutuhan kami secara mendalam, merancang solusi yang tepat, dan memastikan setiap detail berjalan sesuai rencana. Hasilnya, koordinasi tim menjadi lebih lancar, pekerjaan lebih cepat terselesaikan, dan kinerja perusahaan meningkat signifikan. Corvidian bukan hanya penyedia teknologi, tetapi mitra strategis yang membantu kami bergerak maju.",
       author: "~Sugianto",
-      position: "Managing Partner MUC Consulting"
-    }
+      position: "Managing Partner MUC Consulting",
+    },
   ];
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value, type } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
-    }));
-  };
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission logic here
-    console.log('Form submitted:', formData);
-  };
+  const inputStyle =
+    "w-full bg-transparent border-0 border-b border-black pb-[8px] font-normal text-[18px] text-[#1D1F26] placeholder-[#1D1F26] focus:border-[#02C2B3] focus-visible:ring-0 rounded-none";
 
   return (
-    <section id="konsultasi" className='relative w-full py-20'>
-      <div className='max-w-[1388px] mx-auto relative flex flex-col md:flex-row px-4 md:px-0'>
-        {/* Form Section - 500px width */}
-        <div className='md:w-[500px] w-full md:ml-[120px] mb-16 md:mb-0'>
-          {/* Section Title */}
-          <div className='mb-[20px]'>
-            <h2 className='font-extrabold text-[33px] leading-[100%] text-[#1D1F26] mb-[10px]'>
+    <section id="konsultasi" className="relative w-full py-20">
+      <div className="max-w-[1388px] mx-auto relative flex flex-col md:flex-row px-4 md:px-0">
+        <div className="md:w-[500px] w-full md:ml-[120px] mb-16 md:mb-0">
+          <div className="mb-[20px]">
+            <h2 className="font-extrabold text-[33px] text-[#1D1F26] mb-[10px]">
               Jadwalkan Konsultasi Gratis
             </h2>
-            <p className='font-medium text-[18px] leading-[100%] text-[#1D1F26]'>
+            <p className="font-medium text-[18px] text-[#1D1F26]">
               Lengkapi data di bawah, akan kami hubungi segera!
             </p>
           </div>
 
-          {/* Form */}
-          <form onSubmit={handleSubmit} className='space-y-[30px]'>
-            {/* Name Field */}
-            <div className='relative'>
-              <input
-                type="text"
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="space-y-[30px]"
+            >
+              <FormField
                 name="name"
-                placeholder="Nama*"
-                value={formData.name}
-                onChange={handleInputChange}
-                required
-                className='w-full bg-transparent border-0 border-b border-[#000000] pb-[8px] font-normal text-[18px] leading-[100%] text-[#1D1F26] placeholder-[#1D1F26] focus:outline-none focus:border-[#02C2B3]'
+                control={form.control}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        placeholder="Nama*"
+                        className={inputStyle}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
-            </div>
 
-            {/* Email Field */}
-            <div className='relative'>
-              <input
-                type="email"
+              <FormField
                 name="email"
-                placeholder="Email*"
-                value={formData.email}
-                onChange={handleInputChange}
-                required
-                className='w-full bg-transparent border-0 border-b border-[#000000] pb-[8px] font-normal text-[18px] leading-[100%] text-[#1D1F26] placeholder-[#1D1F26] focus:outline-none focus:border-[#02C2B3]'
+                control={form.control}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        placeholder="Email*"
+                        className={inputStyle}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
-            </div>
 
-            {/* Phone Field */}
-            <div className='relative'>
-              <input
-                type="tel"
+              <FormField
                 name="phone"
-                placeholder="Nomor Telepon*"
-                value={formData.phone}
-                onChange={handleInputChange}
-                required
-                className='w-full bg-transparent border-0 border-b border-[#000000] pb-[8px] font-normal text-[18px] leading-[100%] text-[#1D1F26] placeholder-[#1D1F26] focus:outline-none focus:border-[#02C2B3]'
+                control={form.control}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        placeholder="Nomor Telepon*"
+                        className={inputStyle}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
-            </div>
 
-            {/* Company Field */}
-            <div className='relative'>
-              <input
-                type="text"
+              <FormField
                 name="company"
-                placeholder="Perusahaan*"
-                value={formData.company}
-                onChange={handleInputChange}
-                required
-                className='w-full bg-transparent border-0 border-b border-[#000000] pb-[8px] font-normal text-[18px] leading-[100%] text-[#1D1F26] placeholder-[#1D1F26] focus:outline-none focus:border-[#02C2B3]'
+                control={form.control}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        placeholder="Perusahaan*"
+                        className={inputStyle}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
-            </div>
 
-            {/* Question Field */}
-            <div className='relative'>
-              <textarea
+              <FormField
                 name="question"
-                placeholder="Pertanyaan*"
-                value={formData.question}
-                onChange={handleInputChange}
-                required
-                rows={3}
-                className='w-full bg-transparent border-0 border-b border-[#000000] pb-[8px] font-normal text-[18px] leading-[100%] text-[#1D1F26] placeholder-[#1D1F26] focus:outline-none focus:border-[#02C2B3] resize-none'
+                control={form.control}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Textarea
+                        {...field}
+                        placeholder="Pertanyaan*"
+                        className={`${inputStyle} h-[90px] resize-none`}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
-            </div>
 
-            {/* Checkbox */}
-            <div className='flex items-start gap-[10px] mt-[20px]'>
-              <input
-                type="checkbox"
+              <FormField
                 name="agreement"
-                checked={formData.agreement}
-                onChange={handleInputChange}
-                required
-                className='mt-[2px] w-[16px] h-[16px] accent-[#02C2B3]'
+                control={form.control}
+                render={({ field }) => (
+                  <FormItem className="flex items-start gap-[10px] mt-[20px]">
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                      />
+                    </FormControl>
+                    <FormLabel className="text-[14px] text-[#1D1F26]">
+                      Dengan mengirimkan formulir ini, saya setuju untuk
+                      menerima email dari Corvidian*
+                    </FormLabel>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
-              <label className='font-normal text-[14px] leading-[120%] text-[#1D1F26]'>
-                Dengan mengirimkan formulir ini, saya setuju untuk menerima email dari Corvidian*
-              </label>
-            </div>
 
-            {/* Submit Button */}
-            <div className='mt-[30px]'>
-              <button 
-                type="submit"
-                className='w-[221px] h-[44px] bg-[#1578CB] rounded-[7px] flex items-center justify-center hover:bg-[#1568BB] transition-colors duration-200'
+              <Button
+                disabled={loading}
+                className="w-[221px] h-[44px] bg-[#1578CB] hover:bg-[#1568BB] rounded-[7px] text-white font-bold text-[18px]"
               >
-                <span className='font-bold text-[18px] text-[#F4F4F4]'>
-                  Kirim
-                </span>
-              </button>
-            </div>
-          </form>
+                {loading ? "Mengirim..." : "Kirim"}
+              </Button>
+            </form>
+          </Form>
         </div>
 
-        {/* Testimonial Section with Vector.png Background */}
-        <div className='md:ml-auto w-full md:w-[738px] overflow-visible relative'>
-        {/* Vector.png Background */}
-        <div className='w-full h-auto relative'>
-            <div className='absolute inset-0 w-full h-full z-0'>
-            <Image 
+        <div className="md:ml-auto w-full md:w-[738px] overflow-visible relative">
+          <div className="w-full h-auto relative">
+            <div className="absolute inset-0 w-full h-full z-0">
+              <Image
                 src="/schedule/Vector.png"
-                alt="Background shape"
+                alt=""
                 fill
-                style={{ 
-                objectFit: 'fill',
-                objectPosition: 'right top'
-                }}
-                priority
-            />
+                style={{ objectFit: "fill", objectPosition: "right top" }}
+              />
             </div>
-            
-            {/* Content container that determines the height */}
-            <div className='relative z-10 pt-[50px] pb-[60px] pl-[140px] pr-[40px]'>
-            {/* Title */}
-            <div className='ml-[60px] mb-[40px]'>
-                <h3 className='font-extrabold text-[28px] leading-[100%] text-[#F4F4F4]'>
-                Apa kata mereka tentang service Corvidian ?
+
+            <div className="relative z-10 h-full flex flex-col justify-center pt-[50px] pb-[60px] pl-[140px] pr-[40px]">
+              <div className="ml-[60px] mb-[40px]">
+                <h3 className="font-extrabold text-[28px] text-[#F4F4F4]">
+                  Apa kata mereka tentang service Corvidian ?
                 </h3>
-            </div>
-
-            {/* Testimonial Content */}
-            <div className='ml-[40px] flex flex-col justify-between'>
-                {/* Testimonial Text */}
-                <div className=' pr-[9px] mb-[40px]'>
-                <p className='font-normal text-[16px] leading-[150%] text-[#F4F4F4]'>
-                    {testimonials[currentTestimonial].text}
-                </p>
+              </div>
+              <div className="ml-[40px] flex flex-col justify-between">
+                <div className="pr-[9px] mb-[40px] text-white text-[16px]">
+                  {testimonials[currentTestimonial].text}
                 </div>
-
-                {/* Author */}
-                <div className='mb-[40px]'>
-                <p className='font-normal text-[14px] text-[#F4F4F4] italic'>
-                    {testimonials[currentTestimonial].author}
-                </p>
-                <p className='font-normal text-[14px] text-[#F4F4F4] italic'>
-                    {testimonials[currentTestimonial].position}
-                </p>
+                <div className="mb-[40px] text-white text-[14px] italic">
+                  <p>{testimonials[currentTestimonial].author}</p>
+                  <p>{testimonials[currentTestimonial].position}</p>
                 </div>
-
-                {/* Carousel Dots */}
-                <div className='flex justify-center gap-[8px] pr-[100px]'>
-                {testimonials.map((_, index) => (
+                <div className="flex justify-center gap-[8px] pr-[100px]">
+                  {testimonials.map((_, i) => (
                     <button
-                    key={index}
-                    onClick={() => setCurrentTestimonial(index)}
-                    className={`w-[10px] h-[10px] rounded-full transition-colors duration-200 ${
-                        index === currentTestimonial ? 'bg-[#02C2B3]' : 'bg-[#C5CED5]'
-                    }`}
+                      key={i}
+                      onClick={() => setCurrentTestimonial(i)}
+                      className={`w-[10px] h-[10px] rounded-full ${
+                        i === currentTestimonial
+                          ? "bg-[#02C2B3]"
+                          : "bg-[#C5CED5]"
+                      }`}
                     />
-                ))}
-                {/* Additional inactive dots for visual effect */}
-                {Array.from({ length: 7 }, (_, index) => (
+                  ))}
+                  {Array.from({ length: 7 }, (_, i) => (
                     <div
-                    key={`extra-${index}`}
-                    className='w-[10px] h-[10px] rounded-full bg-[#C5CED5]'
+                      key={i}
+                      className="w-[10px] h-[10px] rounded-full bg-[#C5CED5]"
                     />
-                ))}
+                  ))}
                 </div>
+              </div>
             </div>
-            </div>
-        </div>
+          </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
-
-export default ConsultationSchedule

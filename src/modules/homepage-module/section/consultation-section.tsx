@@ -1,7 +1,21 @@
+"use client"
 import React from 'react'
 import Link from 'next/link'
+import { MouseEvent } from 'react'
 
 const ConsultationSection = () => {
+    const scrollToConsultation = (
+      event: MouseEvent<HTMLAnchorElement>
+    ) => {
+      event.preventDefault();
+      const target = document.getElementById("konsultasi");
+  
+      target?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    };
+
   return (
     <section className="relative w-full h-[250px] flex justify-center my-20">
       <div className="w-[90%] max-sm:max-w-[330px] max-sm:h-[241px] max-w-[1110px] h-[179px] rounded-[20px] flex flex-col justify-center md:flex-row  md:items-center md:justify-between px-12"
@@ -19,7 +33,7 @@ const ConsultationSection = () => {
           </p>
         </div>
 
-        <Link href="https://wa.me/1234567890">
+        <Link href="#konsultasi" scroll={false} onClick={scrollToConsultation}>
           <button className="w-[151px] h-[36px] md:w-[221px] md:h-[44px] rounded-[7px] font-bold text-[14px] md:text-[18px] text-white hover:text-corvidian-1 bg-corvidian-2 hover:bg-[#C9C9C9] transition-colors duration-200">
             Konsultasi Gratis
           </button>

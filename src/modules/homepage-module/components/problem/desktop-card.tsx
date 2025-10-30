@@ -24,9 +24,9 @@ export const DesktopCard = () => {
                 <br />
                 Jaringan lambat?
               </p>
-              <p className="text-corvidian-1 font-bold text-md underline cursor-pointer max-lg:text-sm max-lg:text-[11px]">
+              <Link href="/it-infrastructure" className="text-corvidian-1 font-bold text-md underline cursor-pointer max-lg:text-sm max-lg:text-[11px]">
                 Pelajari lebih lanjut
-              </p>
+              </Link>
             </div>
           </div>
         </div>
@@ -38,9 +38,9 @@ export const DesktopCard = () => {
               <br />
               Konsultasikan dengan kami
             </p>
-            <p className="text-corvidian-5 font-bold text-md underline text-right cursor-pointer max-lg:text-[10px] max-lg:mt-2">
+            <Link href='/digital-software-solution' className="text-corvidian-5 font-bold text-md underline text-right cursor-pointer max-lg:text-[10px] max-lg:mt-2">
               Pelajari lebih lanjut
-            </p>
+            </Link>
           </div>
         </div>
       </div>
@@ -58,7 +58,7 @@ export const DesktopCard = () => {
             </p>
           </div>
           <Link
-            href="/service"
+            href="/web-design-development"
             className="text-corvidian-1 font-bold text-lg underline text-left translate-y-2 max-lg:text-[10px] max-lg:pt-20"
           >
             Pelajari lebih lanjut

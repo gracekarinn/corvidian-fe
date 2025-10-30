@@ -1,41 +1,24 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { WawasanCard } from "./wawasan-card";
 import { WawasanNews } from "./wawasan-news";
+import { Article } from "@/modules/wawasan-module/interface";
+import Link from "next/link";
 
 export const WawasanDropdown = () => {
-  // dummy data
-  const news = [
-    {
-      image: "/navbar/dummy-1.png",
-      date: "Wed, 28 July 2025",
-      title: "IT Infrastruktur yang Tidak Tangguh.",
-      description:
-        "Lorem ipsum dolor sit amet consectetur. Massa pharetra ultrices ac platea sagittis mauris cras tristique risus. Cursus quis consequat et at et egestas. Mi posuere egestas eget turpis aliquet molestie lorem placerat lorem.",
-    },
-    {
-      image: "/navbar/dummy-2.png",
-      date: "Wed, 28 July 2025",
-      title:
-        "Panduan Lengkap Pembuatan dan Instalasi Jaringan LAN, WAN, Wireless, dan VLAN untuk Bisnis",
-      description:
-        "Lorem ipsum dolor sit amet consectetur. Massa pharetra ultrices ac platea sagittis mauris cras tristique risus. Cursus quis consequat et at et egestas.",
-    },
-    {
-      image: "/navbar/dummy-3.png",
-      date: "Wed, 28 July 2025",
-      title:
-        "Cara Mengatur dan Mengamankan Router, Switch, dan Firewall untuk Jaringan yang Aman",
-      description:
-        "Lorem ipsum dolor sit amet consectetur. Massa pharetra ultrices ac platea sagittis mauris cras tristique risus. Cursus quis consequat et at et egestas.",
-    },
-    {
-      image: "/navbar/dummy-4.png",
-      date: "Wed, 28 July 2025",
-      title:
-        "Tips Efektif Monitoring, Troubleshooting, dan Maintenance Jaringan agar Tetap Optimal",
-      description:
-        "Lorem ipsum dolor sit amet consectetur. Massa pharetra ultrices ac platea sagittis mauris cras tristique risus. Cursus quis consequat et at et egestas.",
-    },
-  ];
+  const [news, setNews] = useState<Article[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/wawasan/`)
+      .then((res) => res.json())
+      .then((data: Article[]) => {
+        setNews(data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
 
   return (
     <div className="flex flex-col max-h-[700px] overflow-hidden rounded-2xl">
@@ -47,9 +30,40 @@ export const WawasanDropdown = () => {
         <h2 className="text-white text-lg font-semibold mb-4">Newest</h2>
 
         <div className="space-y-6 pr-1">
-          {news.map((item, index) => (
-            <WawasanNews key={index} {...item} />
-          ))}
+          {loading
+            ? Array.from({ length: 4 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="flex gap-4 pb-6 border-b border-white/10 last:border-b-0"
+                >
+                  <div className="w-[175px] h-[100px] rounded-xl bg-corvidian-2/20 animate-pulse" />
+                  <div className="flex-1 space-y-2">
+                    <div className="h-4 w-3/4 bg-corvidian-2/20 rounded animate-pulse" />
+                    <div className="h-3 w-full bg-corvidian-2/20 rounded animate-pulse" />
+                    <div className="h-3 w-5/6 bg-corvidian-2/20 rounded animate-pulse" />
+                  </div>
+                </div>
+              ))
+            : news.map((item) => (
+                <Link
+                  key={item.id}
+                  href={`/tentang-kami/wawasan/${item.slug}`}
+                  className="block"
+                >
+                  <WawasanNews
+                    image={item.cover_image}
+                    date={
+                      item.published_at
+                        ? new Date(item.published_at).toDateString()
+                        : ""
+                    }
+                    title={item.title}
+                    description={item.content
+                      .replace(/<[^>]+>/g, "")
+                      .slice(0, 150)}
+                  />
+                </Link>
+              ))}
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 const MengapaRekamJejak = () => {
   return (
-    <section className='w-screen relative'>
+    <section className='w-[1512px] relative'>
                 <Image
                     src="/tentangkami/bird.png"
                     alt="Cable Image"

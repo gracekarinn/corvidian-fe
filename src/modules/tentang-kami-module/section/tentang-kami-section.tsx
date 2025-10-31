@@ -13,7 +13,7 @@ import Footer from '@/modules/homepage-module/section/footer';
 
 const TentangKamiSection = () => {
   return (
-    <section>
+    <section className="w-[1512px] flex-col min-h-screen">
       <HeroSectionTentangKami />
       <ImageSection />
       <MengapaRekamJejak />

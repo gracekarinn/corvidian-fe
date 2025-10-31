@@ -3,6 +3,8 @@ import React from "react";
 
 export default function Page() {
   return (
-    <TentangKamiModule />
+    <div className="w-screen flex justify-center">
+      <TentangKamiModule />
+    </div>
   );
 }

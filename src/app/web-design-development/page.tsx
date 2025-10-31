@@ -7,12 +7,14 @@ import HeroSectionWeb from '@/modules/web-service-module/section/hero-section-we
 
 export default function WebDesignDevelopmentPage() {
   return (
-    <div className="w-full min-h-screen">
+    <div className="w-screen flex justify-center">
+    <div className="w-[1512px] min-h-screen">
       <HeroSectionWeb/>
       <ConsultationSection/>
       <ConsultationSchedule/>
       <OurPromotionSection/>
       <Footer/>
+    </div>
     </div>
   )
 }

@@ -3,8 +3,9 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { toast } from "sonner";
+import { submitSubscription } from "@/lib/api/customer-api";
 
-const Footer = () => {
+export const Footer = () => {
   const [isLarge, setIsLarge] = useState(false);
   const [isMedium, setIsMedium] = useState(false);
   const [email, setEmail] = useState("");
@@ -14,20 +15,12 @@ const Footer = () => {
       toast.error("Masukkan email");
       return;
     }
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/subscribe/`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, source: "footer" }),
-      }
-    );
-    const data = await res.json();
-    if (!res.ok) {
-      toast.error(data.error || "Gagal subscribe");
+    const result = await submitSubscription({ email, source: "footer" });
+    if (!result.ok) {
+      toast.error(result.error || "Gagal subscribe");
       return;
     }
-    toast.success("Berhasil subscribe");
+    toast.success(result.data?.message || "Berhasil subscribe");
     setEmail("");
   };
 
@@ -52,9 +45,9 @@ const Footer = () => {
       {/* Background vectors for large screens with proper z-index */}
       <div className="md:block hidden">
         {/* Blue background - always top layer on medium and large screens */}
-        <div 
-          className="absolute top-[19.35px] w-[900px] h-[500px] left-[-100px] bg-no-repeat bg-cover bg-center" 
-          style={{ 
+        <div
+          className="absolute top-[19.35px] w-[900px] h-[500px] left-[-100px] bg-no-repeat bg-cover bg-center"
+          style={{
             zIndex: blueZ,
             backgroundImage: "url('/footer/footer_blue.png')",
           }}
@@ -280,5 +273,3 @@ const Footer = () => {
     </footer>
   );
 };
-
-export default Footer;

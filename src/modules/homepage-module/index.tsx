@@ -5,22 +5,19 @@ import { ProblemSection } from "./section/problem-section";
 import { ProjectSection } from "./section/project-section";
 import ConsultationSchedule from "./section/schedule-consultation-section";
 import OurClient from "./section/our-client";
-import Footer from "./section/footer";
 
 export const HomepageModule = () => {
   return (
     <div className="w-screen flex justify-center">
-
-    <div className="w-[1512px] min-h-screen">
-      <HeroSection />
-      <ProblemSection />
-      <ProjectSection />
-      <OurPromotionSection />
-      <ConsultationSection />
-      <ConsultationSchedule />
-      <OurClient />
-      <Footer />
-    </div>
+      <div className="w-[1512px] min-h-screen">
+        <HeroSection />
+        <ProblemSection />
+        <ProjectSection />
+        <OurPromotionSection />
+        <ConsultationSection />
+        <ConsultationSchedule />
+        <OurClient />
+      </div>
     </div>
   );
-}
+};

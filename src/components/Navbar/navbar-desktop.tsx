@@ -6,9 +6,14 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { WawasanDropdown } from "./dropdowns/wawasan-dropdown/wawasan-dropdown";
 import { ProdukDropdown } from "./dropdowns/produk-dropdown/produk-dropdown";
+import { ArticlePreview } from "@/lib/api/wawasan-api";
 type ActiveDropdown = "produk" | "wawasan" | null;
 
-export const NavbarDesktop = () => {
+interface Props {
+  articles: ArticlePreview[];
+}
+
+export const NavbarDesktop = ({ articles }: Props) => {
   const [activeDropdown, setActiveDropdown] = useState<ActiveDropdown>(null);
 
   const handleDropdownToggle = (dropdown: ActiveDropdown) => {
@@ -17,7 +22,7 @@ export const NavbarDesktop = () => {
 
   const dropdownConfigs = {
     produk: { width: 1000, content: <ProdukDropdown /> },
-    wawasan: { width: 760, content: <WawasanDropdown /> },
+    wawasan: { width: 760, content: <WawasanDropdown articles={articles} /> },
   };
 
   const currentConfig = activeDropdown ? dropdownConfigs[activeDropdown] : null;
@@ -49,7 +54,7 @@ export const NavbarDesktop = () => {
             alt="Corvidian Logo"
             width={120}
             height={24}
-            />
+          />
         </Link>
         <motion.div
           whileHover={{ scale: 1.05 }}

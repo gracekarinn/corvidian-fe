@@ -17,6 +17,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import KataMereka from "../components/schedule-consultation/kata-mereka";
+import { submitConsultation } from "@/lib/api/customer-api";
 
 const schema = z.object({
   name: z.string().min(1),
@@ -47,23 +48,16 @@ export default function ConsultationSchedule() {
   const onSubmit = async (values: FormValues) => {
     setLoading(true);
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/consultation/submit/`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(values),
-        }
-      );
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        toast.error(data.error || "Terjadi kesalahan");
+      const result = await submitConsultation(values);
+      if (!result.ok) {
+        toast.error(result.error || "Terjadi kesalahan");
         return;
       }
 
-      toast.success("Berhasil, kami akan menghubungi anda segera");
+      toast.success(
+        result.data?.message || "Berhasil, kami akan menghubungi anda segera"
+      );
+      form.reset();
     } finally {
       setLoading(false);
     }
@@ -73,13 +67,13 @@ export default function ConsultationSchedule() {
     "w-full bg-transparent border-0 border-b border-black pb-[8px] font-normal text-[18px] text-[#1D1F26] placeholder-[#1D1F26] focus:border-[#02C2B3] focus-visible:ring-0 rounded-none";
 
   return (
-    <section id="konsultasi" className='relative w-[1512px] overflow-hidden'>
-      <div className='max-w-[1388px] ms-auto relative flex flex-col md:flex-row px-4 md:px-0'>
+    <section id="konsultasi" className="relative w-[1512px] overflow-hidden">
+      <div className="max-w-[1388px] ms-auto relative flex flex-col md:flex-row px-4 md:px-0">
         {/* Form Section - 500px width */}
-        <div className='md:w-[500px] w-full md:ml-[50px] mb-16 md:mb-0'>
+        <div className="md:w-[500px] w-full md:ml-[50px] mb-16 md:mb-0">
           {/* Section Title */}
-          <div className='mb-[20px]'>
-            <h2 className='font-extrabold text-[33px] leading-[100%] text-[#1D1F26] mb-[10px]'>
+          <div className="mb-[20px]">
+            <h2 className="font-extrabold text-[33px] leading-[100%] text-[#1D1F26] mb-[10px]">
               Jadwalkan Konsultasi Gratis
             </h2>
             <p className="font-medium text-[18px] text-[#1D1F26]">

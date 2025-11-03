@@ -1,14 +1,13 @@
-import React from "react";
+import { fetchWawasanPreviews } from "@/lib/api/wawasan-api";
 import { NavbarDesktop } from "./navbar-desktop";
 import { NavbarMobile } from "./navbar-mobile";
 
-
-// Gunakan export default untuk mencegah masalah import
-export default function Navbar() {
+export async function Navbar() {
+  const articles = await fetchWawasanPreviews();
   return (
     <div>
       <div className="hidden lg:block">
-        <NavbarDesktop />
+        <NavbarDesktop articles={articles} />
       </div>
       <div className="block lg:hidden">
         <NavbarMobile />
@@ -17,5 +16,4 @@ export default function Navbar() {
   );
 }
 
-// Tambahkan export named juga untuk backward compatibility
-export { Navbar };
+export default Navbar;

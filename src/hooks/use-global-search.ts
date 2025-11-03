@@ -19,6 +19,7 @@ interface SearchResponse {
 }
 
 const debounceDelay = 300;
+const MIN_QUERY_LENGTH = 2;
 
 export const useGlobalSearch = (query: string) => {
   const [debouncedQuery, setDebouncedQuery] = useState(query);
@@ -32,7 +33,8 @@ export const useGlobalSearch = (query: string) => {
   }, [query]);
 
   useEffect(() => {
-    if (!debouncedQuery.trim()) {
+    const trimmed = debouncedQuery.trim();
+    if (!trimmed || trimmed.length < MIN_QUERY_LENGTH) {
       setData([]);
       setError(null);
       return;
@@ -43,7 +45,7 @@ export const useGlobalSearch = (query: string) => {
       setError(null);
       try {
         const response = await fetch(
-          `/api/search?q=${encodeURIComponent(debouncedQuery.trim())}`,
+          `/api/search?q=${encodeURIComponent(trimmed)}`,
           { signal: controller.signal }
         );
         if (!response.ok) {

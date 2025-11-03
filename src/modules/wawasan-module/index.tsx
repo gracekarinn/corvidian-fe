@@ -1,6 +1,12 @@
+import { ArticlePreview } from "@/lib/api/wawasan-api";
 import { WawasanSection } from "./section/wawasan-section";
 import { Article } from "./interface";
 
-export const WawasanModule = ({ article }: { article: Article }) => {
-  return <WawasanSection article={article} />;
+interface Props {
+  article: Article;
+  articles: ArticlePreview[];
+}
+
+export const WawasanModule = ({ article, articles }: Props) => {
+  return <WawasanSection article={article} articles={articles} />;
 };

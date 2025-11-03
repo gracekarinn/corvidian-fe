@@ -1,8 +1,14 @@
+import { ArticlePreview } from "@/lib/api/wawasan-api";
 import { WawasanHero } from "../components/wawasan-hero";
 import { ArtikelTerkait } from "../components/artikel-terkait";
 import { Article } from "../interface";
 
-export const WawasanSection = ({ article }: { article: Article }) => {
+interface Props {
+  article: Article;
+  articles: ArticlePreview[];
+}
+
+export const WawasanSection = ({ article, articles }: Props) => {
   return (
     <main className="min-h-screen">
       <WawasanHero
@@ -23,7 +29,7 @@ export const WawasanSection = ({ article }: { article: Article }) => {
         </div>
       </section>
 
-      <ArtikelTerkait currentSlug={article.slug} />
+      <ArtikelTerkait currentSlug={article.slug} articles={articles} />
     </main>
   );
 };

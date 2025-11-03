@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { staticSearchItems, SearchCategory } from "@/lib/search-data";
 import { Article } from "@/modules/wawasan-module/interface";
+import { fetchWawasanArticles } from "@/lib/api/wawasan-api";
 
 type DynamicCategory = SearchCategory | "wawasan";
 
@@ -38,6 +39,8 @@ const categoriesOrder: DynamicCategory[] = [
   "wawasan",
 ];
 
+const MIN_QUERY_LENGTH = 2;
+
 const normalize = (value: string) =>
   value
     .toLowerCase()
@@ -60,14 +63,9 @@ const buildStaticEntries = (): SearchEntry[] =>
   }));
 
 const buildWawasanEntries = async (): Promise<SearchEntry[]> => {
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-  if (!baseUrl) return [];
   try {
-    const response = await fetch(`${baseUrl}/api/wawasan/`, {
-      cache: "no-store",
-    });
-    if (!response.ok) return [];
-    const data: Article[] = await response.json();
+    const data: Article[] = await fetchWawasanArticles();
+    if (data.length === 0) return [];
     return data.slice(0, 25).map((article) => {
       const text = stripHtml(article.content);
       return {
@@ -123,13 +121,14 @@ const groupEntries = (entries: SearchEntry[]): GroupedResult[] => {
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const query = searchParams.get("q");
-  if (!query || !query.trim()) {
+  if (!query || !query.trim() || query.trim().length < MIN_QUERY_LENGTH) {
     return NextResponse.json({ query: query ?? "", results: [] });
   }
+  const trimmed = query.trim();
   const staticEntries = buildStaticEntries();
   const wawasanEntries = await buildWawasanEntries();
   const combined = [...staticEntries, ...wawasanEntries];
-  const filtered = filterEntries(combined, query.trim());
+  const filtered = filterEntries(combined, trimmed);
   const grouped = groupEntries(filtered);
-  return NextResponse.json({ query, results: grouped });
+  return NextResponse.json({ query: trimmed, results: grouped });
 }

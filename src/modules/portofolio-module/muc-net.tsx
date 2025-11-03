@@ -12,7 +12,6 @@ const MucNet = () => {
                 style={{
                   backgroundImage: 'url(/tentangkami/shape.png)', 
                   backgroundSize: 'cover', 
-                  backgroundPosition: 'center', 
                   height: '550.84px'
                 }}
               >
@@ -35,7 +34,7 @@ const MucNet = () => {
                       className="object-contain"
                     />
                     <Image
-                      src='/portofolio/hp1.png'
+                      src='/portofolio/hp2.png'
                       alt="Portfolio Main Image"
                       width={160}
                       height={184}

@@ -10,13 +10,15 @@ import Footer from "@/modules/homepage-module/section/footer";
 
 export default function Portofolio() {
   return (
-    <div className="w-full min-h-screen">
-      <PortofolioHero />
-      <PortofolioContent />
-      <MucNet />
-      <ConsultationSection />
-      <ConsultationSchedule />
-      <Footer />
+    <div className="w-screen flex justify-center">
+      <div className="w-[1512px] min-h-screen">
+        <PortofolioHero />
+        <PortofolioContent />
+        <MucNet />
+        <ConsultationSection />
+        <ConsultationSchedule />
+        <Footer />
+      </div>
     </div>
   )
 }

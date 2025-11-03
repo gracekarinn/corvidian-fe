@@ -26,7 +26,7 @@ const OurPromotionSection = () => {
   ];
 
   return (
-    <section id="why-us" className="w-full bg-[#f4f4f4] py-[60px] my-16">
+    <section id="why-us" className="w-[1512px] bg-[#f4f4f4] py-[60px] my-16">
       <div className="w-full max-w-[1110px] mx-auto px-4">
         {/* Mobile layout - vertical stack */}
         <div className="flex flex-col gap-6 items-center md:hidden">

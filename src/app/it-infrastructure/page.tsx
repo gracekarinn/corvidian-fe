@@ -7,12 +7,14 @@ import Footer from '@/modules/homepage-module/section/footer'
 
 export default function ITInfraPage() {
   return (
-    <div className="w-full min-h-screen">
+    <div className="w-screen flex justify-center">
+    <div className="w-[1512px] min-h-screen">
       <HeroSectionIt/>
       <ConsultationSection/>
       <ConsultationSchedule/>
       <OurPromotionSection/>
       <Footer/>
+    </div>
     </div>
   )
 }

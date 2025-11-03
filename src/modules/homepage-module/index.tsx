@@ -9,7 +9,9 @@ import Footer from "./section/footer";
 
 export const HomepageModule = () => {
   return (
-    <div className="w-full min-h-screen">
+    <div className="w-screen flex justify-center">
+
+    <div className="w-[1512px] min-h-screen">
       <HeroSection />
       <ProblemSection />
       <ProjectSection />
@@ -18,6 +20,7 @@ export const HomepageModule = () => {
       <ConsultationSchedule />
       <OurClient />
       <Footer />
+    </div>
     </div>
   );
 }

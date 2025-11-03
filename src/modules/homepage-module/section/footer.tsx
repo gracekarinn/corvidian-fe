@@ -48,11 +48,13 @@ const Footer = () => {
   const contentZ = isLarge || isMedium ? 35 : 20;
 
   return (
-    <footer className="relative overflow-hidden w-full">
-      <div className="md:block hidden absolute inset-0">
-        <div
-          className="absolute top-[19.35px] w-[900px] h-[500px] left-[-100px] bg-no-repeat bg-cover bg-center"
-          style={{
+    <footer className="relative overflow-hidden w-[1512px]">
+      {/* Background vectors for large screens with proper z-index */}
+      <div className="md:block hidden">
+        {/* Blue background - always top layer on medium and large screens */}
+        <div 
+          className="absolute top-[19.35px] w-[900px] h-[500px] left-[-100px] bg-no-repeat bg-cover bg-center" 
+          style={{ 
             zIndex: blueZ,
             backgroundImage: "url('/footer/footer_blue.png')",
           }}

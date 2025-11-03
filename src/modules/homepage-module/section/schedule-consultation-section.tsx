@@ -73,11 +73,13 @@ export default function ConsultationSchedule() {
     "w-full bg-transparent border-0 border-b border-black pb-[8px] font-normal text-[18px] text-[#1D1F26] placeholder-[#1D1F26] focus:border-[#02C2B3] focus-visible:ring-0 rounded-none";
 
   return (
-    <section id="konsultasi" className="relative w-full py-20">
-      <div className="max-w-[1388px] mx-auto relative flex flex-col md:flex-row px-4 md:px-0">
-        <div className="md:w-[500px] w-full md:ml-[120px] mb-16 md:mb-0">
-          <div className="mb-[20px]">
-            <h2 className="font-extrabold text-[33px] text-[#1D1F26] mb-[10px] whitespace-nowrap">
+    <section id="konsultasi" className='relative w-[1512px] overflow-hidden'>
+      <div className='max-w-[1388px] ms-auto relative flex flex-col md:flex-row px-4 md:px-0'>
+        {/* Form Section - 500px width */}
+        <div className='md:w-[500px] w-full md:ml-[50px] mb-16 md:mb-0'>
+          {/* Section Title */}
+          <div className='mb-[20px]'>
+            <h2 className='font-extrabold text-[33px] leading-[100%] text-[#1D1F26] mb-[10px]'>
               Jadwalkan Konsultasi Gratis
             </h2>
             <p className="font-medium text-[18px] text-[#1D1F26]">

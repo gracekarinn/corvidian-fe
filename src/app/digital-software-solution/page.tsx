@@ -7,12 +7,15 @@ import HeroSectionDigital from '@/modules/digital-service/section/hero-section-d
 
 export default function DigitalSoftwareSolutionPage() {
   return (
-    <div className="w-full min-h-screen">
+    <div className="w-screen flex justify-center">
+      
+    <div className="w-[1512px] min-h-screen">
       <HeroSectionDigital/>
       <ConsultationSection/>
       <ConsultationSchedule/>
       <OurPromotionSection/>
       <Footer/>
+    </div>
     </div>
   )
 }

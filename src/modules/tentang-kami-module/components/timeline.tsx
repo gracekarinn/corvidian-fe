@@ -24,7 +24,7 @@ const Timeline = () => {
     <div className="w-full mt-8">
       <div className="relative">
         {/* Vertical line */}
-        <div className="absolute left-[9px] top-[10px] bottom-0 w-[3px] bg-corvidian-1 h-[85%]"></div>
+        <div className="absolute left-[9px] top-[10px] bottom-0 w-[3px] bg-corvidian-1 lg:h-[85%] h-[80%]"></div>
        
         {/* Timeline items */}
         <div className="space-y-8">

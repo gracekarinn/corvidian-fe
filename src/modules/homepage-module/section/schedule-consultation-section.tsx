@@ -17,16 +17,17 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import KataMereka from "../components/schedule-consultation/kata-mereka";
+// import KataMerekaMobile from "../components/schedule-consultation/kata-mereka-mobile";
 import { submitConsultation } from "@/lib/api/customer-api";
 import KataMerekaMobile from "../components/schedule-consultation/kata-mereka-mobile";
 
 const schema = z.object({
-  name: z.string().min(1),
-  email: z.string().email(),
-  phone: z.string().min(1),
-  company: z.string().min(1),
-  question: z.string().min(1),
-  agreement: z.boolean().refine((v) => v === true),
+  name: z.string().min(1, "Nama wajib diisi"),
+  email: z.string().email("Email tidak valid"),
+  phone: z.string().min(1, "Nomor telepon wajib diisi"),
+  company: z.string().min(1, "Perusahaan wajib diisi"),
+  question: z.string().min(1, "Pertanyaan wajib diisi"),
+  agreement: z.boolean().refine((v) => v === true, "Anda harus menyetujui"),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -55,10 +56,7 @@ export default function ConsultationSchedule() {
         return;
       }
 
-      toast.success(
-        result.data?.message || "Berhasil, kami akan menghubungi anda segera"
-      );
-      form.reset();
+      toast.success("Berhasil, kami akan menghubungi anda segera");
     } finally {
       setLoading(false);
     }

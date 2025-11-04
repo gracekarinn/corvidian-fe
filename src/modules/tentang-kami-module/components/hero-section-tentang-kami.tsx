@@ -15,7 +15,7 @@ const HeroSectionTentangKami = () => {
                 </h1>
             </div>
             <div className="w-1/2 text-end">
-                <p className='text-[12px] ps-[50%] pt-[50px]'>Ubah tantangan kompleks bisnis melalui solusi digital yang relevan, skalabel, dan berdampak nyata.</p>
+                <p className='text-[12px] ps-[50%] pt-0 lg:pt-[50px]'>Ubah tantangan kompleks bisnis melalui solusi digital yang relevan, skalabel, dan berdampak nyata.</p>
             </div>
           </div>
         </div>

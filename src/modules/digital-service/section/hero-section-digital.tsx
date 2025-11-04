@@ -6,7 +6,7 @@ import ContentIt from '../components/hero-section-it/contentIt';
 
 const HeroSectionDigital = () => {
   return (
-    <div className='w-[1512px] relative overflow-hidden'>
+    <div className='w-full max-w-[1550px] relative overflow-hidden'>
         {/* Background elements */}
         <div className="w-screen">
           <div 

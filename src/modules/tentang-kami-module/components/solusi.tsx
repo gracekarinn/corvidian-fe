@@ -36,28 +36,26 @@ const Solusi = () => {
 
   return (
     <section className='w-full relative'>
-        <div className="container relative mx-[100px] px-[100px] pb-[40px] z-10 mb-[40px]">
+        <div className="container relative mx-auto px-4 lg:mx-[100px] lg:px-[100px] pb-[40px] z-10 mb-[40px]">
           <div className="space-y-4 lg:space-y-6 w-full">
-                <h1 className="text-xl max-sm:max-w-[330px] md:text-2xl font-extrabold text-corvidian-1 leading-tight max-[350px]:text-2xl max-[350px]:!max-w-[250px]">
+                <h1 className="text-[20px] lg:text-2xl font-extrabold text-corvidian-1 leading-tight">
                     Solusi 
                     <span className='text-[#2A77BD] mx-1'>
                          Corvidian              
                     </span>
                 </h1>
-                <div className="w-3/4 text-[14px]">
-                    <p className='text-[12px]'>Kami rancang untuk menjawab tantangan dan mengubahnya menjadi peluang</p>
+                <div className="w-full lg:w-3/4">
+                    <p className='text-[12px] lg:text-[14px]'>Kami rancang untuk menjawab tantangan dan mengubahnya menjadi peluang</p>
                 </div>
 
-                {/* Cards Grid */}
-                <div className="grid grid-cols-2 gap-[22px] mt-8">
+                {/* Cards Grid - Desktop */}
+                <div className="hidden lg:grid grid-cols-2 gap-[22px] mt-8">
                   {/* Left Column */}
-                  <div className="flex flex-col gap-[23px]">
+                  <div className="flex flex-col gap-[10px]">
                     {/* IT Infrastructure - Kiri Atas */}
                     <div 
-                      className="rounded-[20px] flex flex-col justify-between"
+                      className="rounded-[20px] w-[530px] h-full lg:h-[307px] flex flex-col justify-between"
                       style={{ 
-                        width: '530px', 
-                        height: '307px',
                         background: solutions[0].gradient
                       }}
                     >
@@ -70,7 +68,7 @@ const Solusi = () => {
                           className="object-contain scale-x-[-1]"
                         />
                       </div>
-                      <div className="mt-2 p-6">
+                      <div className=" p-0 lg:p-6 mb-[20px]">
                         <h3 className="text-[24px] font-bold text-black mb-2">
                           {solutions[0].title}
                         </h3>
@@ -138,6 +136,90 @@ const Solusi = () => {
                           {solutions[3].description}
                         </p>
                       </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Cards Grid - Mobile */}
+                <div className="flex lg:hidden flex-col gap-[15px] mt-6">
+                  {/* IT Infrastructure */}
+                  <div 
+                    className="rounded-[16px] flex flex-col justify-between w-full"
+                    style={{ 
+                      height: '200px',
+                      background: solutions[0].gradient
+                    }}
+                  >
+                    <div className="flex-1 flex items-start justify-end pt-2 pr-2">
+                      <Image 
+                        src={solutions[0].image!}
+                        alt={solutions[0].title}
+                        width={180}
+                        height={90}
+                        className="object-contain scale-x-[-1]"
+                      />
+                    </div>
+                    <div className="p-4">
+                      <h3 className="text-[16px] font-bold text-black mb-1">
+                        {solutions[0].title}
+                      </h3>
+                      <p className="text-[10px] text-black">
+                        {solutions[0].description}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Web Design & Development */}
+                  <div 
+                    className="rounded-[16px] p-4 flex flex-col justify-end w-full"
+                    style={{ 
+                      height: '120px',
+                      background: solutions[1].gradient
+                    }}
+                  >
+                    <div>
+                      <h3 className="text-[16px] font-bold text-white mb-1">
+                        {solutions[1].title}
+                      </h3>
+                      <p className="text-[10px] text-white">
+                        {solutions[1].description}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Digital Software Solutions */}
+                  <div 
+                    className="rounded-[16px] p-4 flex flex-col justify-end w-full"
+                    style={{ 
+                      height: '150px',
+                      background: solutions[2].gradient
+                    }}
+                  >
+                    <div>
+                      <h3 className="text-[16px] font-bold text-white mb-1">
+                        {solutions[2].title}
+                      </h3>
+                      <p className="text-[10px] text-white">
+                        {solutions[2].description}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* CoBuild */}
+                  <div 
+                    className="rounded-[16px] p-4 flex flex-col justify-end w-full"
+                    style={{ 
+                      height: '160px',
+                      background: solutions[3].gradient
+                    }}
+                  >
+                    <div>
+                      <h3 className="text-[16px] font-bold text-black mb-1">
+                        {solutions[3].title}
+                      </h3>
+                      <p className="text-[10px] text-black">
+                        {solutions[3].description}
+                      </p>
                     </div>
                   </div>
                 </div>

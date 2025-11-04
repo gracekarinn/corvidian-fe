@@ -27,19 +27,19 @@ const TimKami = () => {
 
   return (
     <section className='pb-12'>
-        <div className="container relative mt-[40px] mx-[100px] px-4 lg:px-[100px] z-10 mb-[40px]">
+        <div className="container relative mt-[40px] mx-auto px-4 lg:mx-[100px] lg:px-[100px] z-10 mb-[40px]">
           <div className="space-y-4 lg:space-y-6 w-full">
-                <h1 className="text-xl max-sm:max-w-[330px] md:text-2xl font-extrabold text-corvidian-1 leading-tight max-[350px]:text-2xl max-[350px]:!max-w-[250px]">
+                <h1 className="text-[20px] lg:text-2xl font-extrabold text-corvidian-1 leading-tight">
                     Tim Kami               
                 </h1>
-                <div className="w-3/4 flex flex-col gap-[20px] text-[14px]">
-                    <p className='text-[12px]'>Corvidian terinspirasi dari keluarga burung corvidae, hewan yang dikenal cerdas, adaptif, dan mampu memecahkan masalah secara strategis. Filosofi kami, Think Fast. Fly High., mencerminkan kemampuan berpikir cepat untuk menemukan solusi, serta visi untuk membantu bisnis terbang lebih tinggi.</p>
+                <div className="w-full lg:w-3/4 flex flex-col gap-[20px]">
+                    <p className='text-[12px] lg:text-[14px]'>Corvidian terinspirasi dari keluarga burung corvidae, hewan yang dikenal cerdas, adaptif, dan mampu memecahkan masalah secara strategis. Filosofi kami, Think Fast. Fly High., mencerminkan kemampuan berpikir cepat untuk menemukan solusi, serta visi untuk membantu bisnis terbang lebih tinggi.</p>
                 </div>
-
             </div>
         </div>
-        {/* Team Cards Grid */}
-        <div className="grid grid-cols-4 gap-[8px] mt-8 mx-[90px]">
+
+        {/* Team Cards Grid - Desktop */}
+        <div className="hidden lg:grid grid-cols-4 gap-[8px] mt-8 mx-[90px]">
           {teamMembers.map((member, index) => (
             <div 
               key={index}
@@ -56,7 +56,7 @@ const TimKami = () => {
                 }}
               >
                 {/* Image */}
-                <div className="w-full h-full relative ">
+                <div className="w-full h-full relative">
                   <Image 
                     src={member.image}
                     alt={member.name}
@@ -85,7 +85,53 @@ const TimKami = () => {
                 </div>
               </div>
             </div>
-            ))}
+          ))}
+        </div>
+
+        {/* Team Cards Grid - Mobile (2 columns x 2 rows) */}
+        <div className="grid lg:hidden grid-cols-2 gap-3 mt-6 px-4">
+          {teamMembers.map((member, index) => (
+            <div 
+              key={index}
+              className="flex flex-col items-center w-full"
+            >
+              {/* Card Container */}
+              <div 
+                className="relative rounded-[16px] overflow-hidden w-full"
+                style={{ 
+                  aspectRatio: '260/380',
+                  backgroundColor: '#F4F4F4'
+                }}
+              >
+                {/* Image */}
+                <div className="w-full h-full relative">
+                  <Image 
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-contain pt-[40px]"
+                  />
+                </div>
+                {/* Name Tag */}
+                <div 
+                  className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-white rounded-[6px] px-3 py-2 text-center w-[calc(100%-16px)]"
+                  style={{ 
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                  }}
+                >
+                  <h3 className="text-[11px] font-bold text-black leading-tight">
+                    {member.name}
+                  </h3>
+                  <p className="text-[9px] text-black mt-0.5 leading-tight">
+                    {member.position}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
     </section>
   )

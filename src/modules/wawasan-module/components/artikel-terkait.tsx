@@ -13,7 +13,7 @@ export const ArtikelTerkait = ({ currentSlug, articles }: Props) => {
     .slice(0, 3);
 
   return (
-    <div className="py-20 max-w-[871px] mx-auto text-corvidian-1">
+    <div className="py-20 w-screen max-w-[871px] mx-auto text-corvidian-1">
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-3xl font-bold mb-8">Artikel Terkait Lainnya.</h2>
 

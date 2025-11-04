@@ -12,7 +12,7 @@ import HeroSectionTentangKami from "../components/hero-section-tentang-kami";
 const TentangKamiSection = async () => {
   const articles = await fetchWawasanPreviews();
   return (
-    <section className="w-[1512px] flex-col min-h-screen">
+    <section className="w-screen max-w-[1550px] flex-col min-h-screen over">
       <HeroSectionTentangKami />
       <ImageSection />
       <MengapaRekamJejak />

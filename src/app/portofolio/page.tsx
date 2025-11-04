@@ -8,7 +8,7 @@ import ConsultationSection from "@/modules/homepage-module/section/consultation-
 export default function Portofolio() {
   return (
     <div className="w-screen flex justify-center">
-      <div className="w-[1512px] min-h-screen">
+      <div className="w-full max-w-[1550px] min-h-screen">
         <PortofolioHero />
         <PortofolioContent />
         <MucNet />

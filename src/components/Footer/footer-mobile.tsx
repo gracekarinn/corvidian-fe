@@ -38,30 +38,18 @@ export const FooterMobile = () => {
   };
 
   return (
-    <section className="relative overflow-hidden rounded-[32px] bg-[#1D1F26] text-white">
-      <div className="relative overflow-hidden px-6 pt-12 pb-16">
-        <div className="pointer-events-none absolute -top-16 left-[-220px] z-10">
-          <Image
-            src="/footer/footer-biru.png"
-            alt="Footer blue accent"
-            width={960}
-            height={480}
-            priority
-            className="h-auto w-[820px]"
-          />
-        </div>
-        <div className="pointer-events-none absolute bottom-[-100px] right-[-200px] z-0">
-          <Image
-            src="/footer/footer-abu-abu.png"
-            alt="Footer gray accent"
-            width={963}
-            height={480}
-            priority
-            className="h-auto w-[520px]"
-          />
-        </div>
+    <section className="overflow-hidden text-white">
+      <div className="relative flex min-h-[550px] items-center justify-center px-6 py-16">
+        <Image
+          src="/footer/footer-biru-mobile.png"
+          alt="Footer blue accent"
+          width={800}
+          height={550}
+          priority
+          className="absolute inset-0 w-full h-full object-cover"
+        />
 
-        <div className="relative z-20 flex flex-col gap-6">
+        <div className="relative z-10 flex w-full max-w-[300px] flex-col gap-6 translate-y-16">
           <Image
             src="/footer/CordovaWhite.png"
             alt="Corvidian Logo"
@@ -70,7 +58,7 @@ export const FooterMobile = () => {
             priority
             className="h-auto w-[160px]"
           />
-          <div className="max-w-[280px] space-y-3 text-sm">
+          <div className="space-y-3 text-sm">
             <h3 className="text-xs font-semibold uppercase tracking-wide">
               Kantor
             </h3>
@@ -81,7 +69,7 @@ export const FooterMobile = () => {
             </p>
           </div>
           <div className="space-y-3">
-            <p className="max-w-[260px] text-xs leading-6 text-[#F4F4F4]">
+            <p className="text-xs leading-6 text-[#F4F4F4]">
               Dapatkan info penawaran menarik lebih awal dengan{" "}
               <span className="font-semibold">
                 cantumkan email kamu di samping!
@@ -91,7 +79,7 @@ export const FooterMobile = () => {
               <input
                 type="email"
                 placeholder={SUBSCRIBE.placeholder}
-                className="h-11 w-full rounded-full px-4 text-sm text-black placeholder:text-[#8A8A8A]"
+                className="h-11 w-full rounded-full bg-white px-4 text-sm text-black placeholder:text-[#8A8A8A]"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 onKeyDown={(event) => {
@@ -102,20 +90,12 @@ export const FooterMobile = () => {
                 }}
                 disabled={isSubmitting}
               />
-              <button
-                type="button"
-                className="h-11 w-full rounded-full bg-[#15C0C4] px-5 text-sm font-semibold text-[#101217] transition-colors hover:bg-[#0fa4a7] disabled:cursor-not-allowed disabled:opacity-60"
-                onClick={handleSubscribe}
-                disabled={isSubmitting}
-              >
-                Kirim
-              </button>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="relative z-20 flex flex-col gap-10 px-6 pb-12">
+      <div className="flex flex-col gap-10 px-6 py-12 bg-[#1D1F26]">
         <nav className="grid grid-cols-2 gap-x-6 gap-y-3 text-sm">
           {primaryLinks.map((link) => (
             <Link
@@ -147,9 +127,7 @@ export const FooterMobile = () => {
                 width={18}
                 height={18}
               />
-              <span className="font-semibold text-white">
-                {CONTACT.email}
-              </span>
+              <span className="font-semibold text-white">{CONTACT.email}</span>
             </div>
             <div className="flex items-center gap-2">
               <Image

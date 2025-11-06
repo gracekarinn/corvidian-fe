@@ -8,9 +8,9 @@ interface Props {
 
 export const ArtikelKami = ({ articles }: Props) => {
   return (
-    <div className="py-16 max-w-[871px] px-[180px] space-y-6 text-corvidian-1">
+    <div className="py-16 max-xl:max-w-[871px] xl:max-w-[1200px] px-[180px] space-y-6 text-corvidian-1 mx-auto">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-8">Wawasan</h2>
+        <h2 className="text-3xl font-extrabold mb-8">Wawasan</h2>
 
         <div className="space-y-6">
           {articles.length === 0 ? (

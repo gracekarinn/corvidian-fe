@@ -4,6 +4,7 @@ import { HeroSection } from "./section/hero-section";
 import { ProblemSection } from "./section/problem-section";
 import { ProjectSection } from "./section/project-section";
 import OurClient from "./section/our-client";
+import ConsultationSchedule from "./section/schedule-consultation-section";
 
 export const HomepageModule = () => {
   return (
@@ -12,9 +13,9 @@ export const HomepageModule = () => {
         <HeroSection />
         <ProblemSection />
         <ProjectSection />
-        <OurPromotionSection />
         <ConsultationSection />
-        {/* <ConsultationSchedule /> */}
+        <ConsultationSchedule />
+        <OurPromotionSection />
         <OurClient />
       </div>
     </div>

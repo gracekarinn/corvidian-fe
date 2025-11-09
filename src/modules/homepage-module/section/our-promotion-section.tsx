@@ -32,7 +32,7 @@ const OurPromotionSection = () => {
     >
       <div className="w-full max-w-[1110px] mx-auto px-4">
         <div className="flex flex-col gap-6 items-center md:hidden">
-          <div className="w-[338px] ">
+          <div className="w-[338px] p-4">
             <div className="mb-[20px]">
               <h2 className="font-extrabold text-[28px] leading-[100%] text-corvidian-1">
                 Kenapa Banyak Bisnis Pilih Corvidian?

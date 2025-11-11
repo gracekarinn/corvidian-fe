@@ -3,7 +3,6 @@ import ConsultationSchedule from "@/modules/homepage-module/section/schedule-con
 import ConsultationSection from "@/modules/homepage-module/section/consultation-section";
 import OurPromotionSection from "@/modules/homepage-module/section/our-promotion-section";
 import HeroSectionDigital from "@/modules/digital-service/section/hero-section-digital";
-import { Footer } from "@/components/Footer/footer";
 
 
 export default function DigitalSoftwareSolutionPage() {
@@ -15,7 +14,6 @@ export default function DigitalSoftwareSolutionPage() {
       <ConsultationSection/>
       <ConsultationSchedule/>
       <OurPromotionSection/>
-      <Footer/>
     </div>
     </div>
     

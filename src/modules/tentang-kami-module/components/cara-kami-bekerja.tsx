@@ -9,7 +9,7 @@ const CaraKamiBekerja = () => {
             <h1 className="text-[32px] font-extrabold text-black leading-tight max-lg:text-center">
               Cara Kami Bekerja
             </h1>
-            <p className="text-[14px] font-semibold text-black leading-relaxed max-lg:text-center">
+            <p className="text-[14px]  text-black leading-relaxed max-lg:text-center">
               Kami percaya inovasi terbaik lahir dari kolaborasi. Tim Corvidian bekerja lintas disiplin, menggabungkan insight bisnis, teknologi, dan kreativitas, untuk menciptakan solusi digital yang relevan, berkelanjutan, dan mudah diadaptasi.
             </p>
           </div>

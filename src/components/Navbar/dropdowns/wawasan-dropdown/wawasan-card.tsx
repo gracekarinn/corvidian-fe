@@ -65,7 +65,7 @@ export const WawasanCard = () => {
             <Image 
               src="/navbar/lms.png" 
               alt="laptop" 
-              width={80} 
+              width={60} 
               height={57}
               className="object-contain"
             />
@@ -74,7 +74,7 @@ export const WawasanCard = () => {
             <Image 
               src="/navbar/muc.png" 
               alt="tablet" 
-              width={100} 
+              width={60} 
               height={50}
               className="object-contain"
             />

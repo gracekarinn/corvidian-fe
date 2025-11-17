@@ -1,54 +1,45 @@
 export const primaryLinks = [
-  { label: "Produk & Layanan", href: "#" },
-  { label: "Solusi", href: "#" },
-  { label: "Sumber Daya", href: "#" },
-  { label: "Harga", href: "#" },
-  { label: "Tentang Kami", href: "#" },
+  { label: "Beranda", href: "/" },
+  { label: "Tentang Kami", href: "/tentang-kami" },
+  { label: "Layanan", href: "/layanan" },
 ];
 
 export const secondaryLinks = [
-  { label: "Testimoni Klien", href: "#" },
-  { label: "Telpon Resmi", href: "#" },
-  { label: "Klien Kami", href: "#" },
-  { label: "Portofolio Kami", href: "#" },
+  { label: "Portofolio", href: "/portofolio" },
+  { label: "Kontak", href: "/konsultasi" },
+  { label: "Testimoni", href: "/testimoni" },
 ];
 
 export const CONTACT = {
-  email: "ask@corvidian.io",
-  phoneMobile: "0878 2070 6075 (WA Business)",
-  phoneDesktop: "+62 812 2191 5478",
+  email: "info@corvidian.io",
+  phoneDesktop: "+62 812-3456-7890",
+  phoneMobile: "+62 812-3456-7890",
 };
 
 export const SOCIAL_ICONS = [
   {
-    href: "#",
-    alt: "Facebook Icon",
-    src: "/footer/facebook.png",
-    label: "Facebook Corvidian",
+    src: "/footer/Instagram.png",
+    alt: "Instagram",
+    label: "Instagram",
+    href: "https://www.instagram.com/corvidian.io",
   },
   {
-    href: "#",
-    alt: "LinkedIn Icon",
-    src: "/footer/linkedin.png",
-    label: "LinkedIn Corvidian",
+    src: "/footer/LinkedIn.png",
+    alt: "LinkedIn",
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/corvidianindonesia/about",
   },
   {
-    href: "#",
-    alt: "Instagram Icon",
-    src: "/footer/instagram.png",
-    label: "Instagram Corvidian",
-  },
-  {
-    href: "#",
-    alt: "YouTube Icon",
-    src: "/footer/youtube.png",
-    label: "YouTube Corvidian",
+    src: "/footer/TikTok.png",
+    alt: "TikTok",
+    label: "TikTok",
+    href: "https://www.tiktok.com/@corvidian.io",
   },
 ];
 
 export const SUBSCRIBE = {
   placeholder: "Email",
-  successMessage: "Berhasil subscribe",
-  errorEmpty: "Masukkan email",
-  errorFail: "Gagal subscribe",
+  errorEmpty: "Email tidak boleh kosong",
+  errorFail: "Gagal berlangganan. Silakan coba lagi.",
+  successMessage: "Terima kasih! Anda telah berlangganan newsletter kami.",
 };

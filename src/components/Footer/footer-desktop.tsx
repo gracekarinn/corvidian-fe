@@ -41,8 +41,8 @@ export const FooterDesktop = () => {
     <footer className="relative mx-auto w-full max-w-[1512px] min-h-[400px] overflow-hidden">
       <div className="absolute bottom-0 right-0 z-10 h-[400px] w-[1000px] bg-corvidian-1 max-xl:w-[900px]" />
 
-      <div className="relative z-30 container mx-auto grid h-full min-h-[420px] grid-cols-12 text-white overflow-hidden">
-        <div className="col-span-6 flex pl-16 pb-12 pt-12">
+      <div className="relative z-30 container ms-[10px] me-auto grid h-full min-h-[420px] grid-cols-12 text-white overflow-hidden">
+        <div className="col-span-6 flex pb-12 pt-12">
           <div className="ml-36 mt-16 space-y-6 max-xl:ml-8 xl:translate-y-8">
             <div className="flex items-center">
               <Image

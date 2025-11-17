@@ -33,7 +33,7 @@ const TimKami = () => {
             Tim Kami
           </h1>
           <div className="w-full lg:w-3/4 xl:w-2/3 flex flex-col gap-[20px]">
-            <p className="text-[12px] sm:text-[13px] md:text-[14px] lg:text-[14px] leading-relaxed max-lg:text-center max-lg:items-center">
+            <p className="text-[12px] font-semibold sm:text-[13px] md:text-[14px] lg:text-[14px] leading-relaxed max-lg:text-center max-lg:items-center">
               Corvidian terinspirasi dari keluarga burung corvidae, hewan yang
               dikenal cerdas, adaptif, dan mampu memecahkan masalah secara
               strategis. Filosofi kami, Think Fast. Fly High., mencerminkan

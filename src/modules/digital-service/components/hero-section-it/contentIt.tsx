@@ -35,12 +35,15 @@ const ContentDigital = () => {
 
         {/* Section 1: Pengembangan Aplikasi (Application Development) */}
         <div className="lg:mt-[80px] mt-[40px]">
-          <div className="bg-white shadow-xl w-full h-[60px] flex items-center">
+          <div 
+            className="bg-white shadow-xl w-full h-[60px] flex items-center cursor-pointer"
+            onClick={() => setInfrastructureExpanded(!infrastructureExpanded)}
+          >
             <div className="ml-[20px] lg:ml-[50px] w-[4px] h-[60%] bg-[#1578CB] self-center"/>
             <p className="ml-[20px] lg:ml-[50px] text-[12px] lg:text-[18px] text-corvidian-1 font-bold my-auto flex-grow pr-4 md:w-full w-3/4">
               Pengembangan Aplikasi (Web, Mobile, Integrated Systems)
             </p>
-            <div className="mr-[15px] lg:mr-[30px] cursor-pointer flex-shrink-0" onClick={() => setInfrastructureExpanded(!infrastructureExpanded)}>
+            <div className="mr-[15px] lg:mr-[30px] flex-shrink-0">
               {infrastructureExpanded ? (
                 <Image
                   src="/heroItInfra/Up.png"
@@ -65,11 +68,14 @@ const ContentDigital = () => {
           {infrastructureExpanded && (
             <div className="mt-2 flex flex-col">
               {/* Details section */}
-              <div className="bg-[#C5CED5] shadow-xl w-[calc(100%-40px)] lg:w-[1110px] ml-[40px] lg:ml-[105px] h-[60px] flex items-center">
+              <div 
+                className="bg-[#C5CED5] shadow-xl w-[calc(100%-40px)] lg:w-[1110px] ml-[40px] lg:ml-[105px] h-[60px] flex items-center cursor-pointer"
+                onClick={() => setInfrastructureDetailsExpanded(!infrastructureDetailsExpanded)}
+              >
                 <p className="ml-6 lg:ml-8 text-[12px] lg:text-[18px] text-corvidian-1 font-bold my-auto flex-grow pr-4">
                   Rincian layanan 
                 </p>
-                <div className="mr-[15px] lg:mr-[30px] cursor-pointer flex-shrink-0" onClick={() => setInfrastructureDetailsExpanded(!infrastructureDetailsExpanded)}>
+                <div className="mr-[15px] lg:mr-[30px] flex-shrink-0">
                   {infrastructureDetailsExpanded ? (
                     <Image
                       src="/heroItInfra/UpDark.png"
@@ -113,11 +119,14 @@ const ContentDigital = () => {
               )}
               
               {/* FAQ section */}
-              <div className="bg-[#C5CED5] shadow-xl w-[calc(100%-40px)] lg:w-[1110px] ml-[40px] lg:ml-[105px] h-[60px] flex items-center mt-2">
+              <div 
+                className="bg-[#C5CED5] shadow-xl w-[calc(100%-40px)] lg:w-[1110px] ml-[40px] lg:ml-[105px] h-[60px] flex items-center mt-2 cursor-pointer"
+                onClick={() => setInfrastructureFAQExpanded(!infrastructureFAQExpanded)}
+              >
                 <p className="ml-6 lg:ml-8 text-[12px] lg:text-[18px] text-corvidian-1 font-bold my-auto flex-grow pr-4">
                   Pertanyaan yang sering ditanyakan (FAQ)
                 </p>
-                <div className="mr-[15px] lg:mr-[30px] cursor-pointer flex-shrink-0" onClick={() => setInfrastructureFAQExpanded(!infrastructureFAQExpanded)}>
+                <div className="mr-[15px] lg:mr-[30px] flex-shrink-0">
                   {infrastructureFAQExpanded ? (
                     <Image
                       src="/heroItInfra/UpDark.png"
@@ -162,12 +171,15 @@ const ContentDigital = () => {
 
         {/* Section 2: Desain/Pengalaman Pengguna (UI/UX Design) */}
         <div className="mt-[20px]">
-          <div className="bg-white shadow-xl w-full h-[60px] flex items-center">
+          <div 
+            className="bg-white shadow-xl w-full h-[60px] flex items-center cursor-pointer"
+            onClick={() => setSecurityExpanded(!securityExpanded)}
+          >
             <div className="ml-[20px] lg:ml-[50px] w-[4px] h-[60%] bg-[#1578CB] self-center"/>
             <p className="ml-[20px] lg:ml-[50px] text-[12px] lg:text-[18px] text-corvidian-1 font-bold my-auto flex-grow pr-4 md:w-full w-3/4">
               Desain/Pengalaman Pengguna Aplikasi dan Sistem (UI/UX Design)
             </p>
-            <div className="mr-[15px] lg:mr-[30px] cursor-pointer flex-shrink-0" onClick={() => setSecurityExpanded(!securityExpanded)}>
+            <div className="mr-[15px] lg:mr-[30px] flex-shrink-0">
               {securityExpanded ? (
                 <Image
                   src="/heroItInfra/Up.png"
@@ -192,11 +204,14 @@ const ContentDigital = () => {
           {securityExpanded && (
             <div className="mt-2 flex flex-col">
               {/* Details section */}
-              <div className="bg-[#C5CED5] shadow-xl w-[calc(100%-40px)] lg:w-[1110px] ml-[40px] lg:ml-[105px] h-[60px] flex items-center">
+              <div 
+                className="bg-[#C5CED5] shadow-xl w-[calc(100%-40px)] lg:w-[1110px] ml-[40px] lg:ml-[105px] h-[60px] flex items-center cursor-pointer"
+                onClick={() => setSecurityDetailsExpanded(!securityDetailsExpanded)}
+              >
                 <p className="ml-6 lg:ml-8 text-[12px] lg:text-[18px] text-corvidian-1 font-bold my-auto flex-grow pr-4">
                   Rincian layanan 
                 </p>
-                <div className="mr-[15px] lg:mr-[30px] cursor-pointer flex-shrink-0" onClick={() => setSecurityDetailsExpanded(!securityDetailsExpanded)}>
+                <div className="mr-[15px] lg:mr-[30px] flex-shrink-0">
                   {securityDetailsExpanded ? (
                     <Image
                       src="/heroItInfra/UpDark.png"
@@ -240,11 +255,14 @@ const ContentDigital = () => {
               )}
               
               {/* FAQ section */}
-              <div className="bg-[#C5CED5] shadow-xl w-[calc(100%-40px)] lg:w-[1110px] ml-[40px] lg:ml-[105px] h-[60px] flex items-center mt-2">
+              <div 
+                className="bg-[#C5CED5] shadow-xl w-[calc(100%-40px)] lg:w-[1110px] ml-[40px] lg:ml-[105px] h-[60px] flex items-center mt-2 cursor-pointer"
+                onClick={() => setSecurityFAQExpanded(!securityFAQExpanded)}
+              >
                 <p className="ml-6 lg:ml-8 text-[12px] lg:text-[18px] text-corvidian-1 font-bold my-auto flex-grow pr-4">
                   Pertanyaan yang sering ditanyakan (FAQ)
                 </p>
-                <div className="mr-[15px] lg:mr-[30px] cursor-pointer flex-shrink-0" onClick={() => setSecurityFAQExpanded(!securityFAQExpanded)}>
+                <div className="mr-[15px] lg:mr-[30px] flex-shrink-0">
                   {securityFAQExpanded ? (
                     <Image
                       src="/heroItInfra/UpDark.png"
@@ -289,12 +307,15 @@ const ContentDigital = () => {
 
         {/* Section 3: Manajemen Data & Pemeliharaan Sistem */}
         <div className="mt-[20px] lg:mb-[80px] mb-[40px]">
-          <div className="bg-white shadow-xl w-full h-[60px] flex items-center">
+          <div 
+            className="bg-white shadow-xl w-full h-[60px] flex items-center cursor-pointer"
+            onClick={() => setOperationsExpanded(!operationsExpanded)}
+          >
             <div className="ml-[20px] lg:ml-[50px] w-[4px] h-[60%] bg-[#1578CB] self-center"/>
             <p className="ml-[20px] lg:ml-[50px] text-[12px] lg:text-[18px] text-corvidian-1 font-bold my-auto flex-grow pr-4 md:w-full w-3/4">
               Manajemen Data & Pemeliharaan Sistem (Data Management & System Maintenance)
             </p>
-            <div className="mr-[15px] lg:mr-[30px] cursor-pointer flex-shrink-0" onClick={() => setOperationsExpanded(!operationsExpanded)}>
+            <div className="mr-[15px] lg:mr-[30px] flex-shrink-0">
               {operationsExpanded ? (
                 <Image
                   src="/heroItInfra/Up.png"
@@ -319,11 +340,14 @@ const ContentDigital = () => {
           {operationsExpanded && (
             <div className="mt-2 flex flex-col">
               {/* Details section */}
-              <div className="bg-[#C5CED5] shadow-xl w-[calc(100%-40px)] lg:w-[1110px] ml-[40px] lg:ml-[105px] h-[60px] flex items-center">
+              <div 
+                className="bg-[#C5CED5] shadow-xl w-[calc(100%-40px)] lg:w-[1110px] ml-[40px] lg:ml-[105px] h-[60px] flex items-center cursor-pointer"
+                onClick={() => setOperationsDetailsExpanded(!operationsDetailsExpanded)}
+              >
                 <p className="ml-6 lg:ml-8 text-[12px] lg:text-[18px] text-corvidian-1 font-bold my-auto flex-grow pr-4">
                   Rincian layanan 
                 </p>
-                <div className="mr-[15px] lg:mr-[30px] cursor-pointer flex-shrink-0" onClick={() => setOperationsDetailsExpanded(!operationsDetailsExpanded)}>
+                <div className="mr-[15px] lg:mr-[30px] flex-shrink-0">
                   {operationsDetailsExpanded ? (
                     <Image
                       src="/heroItInfra/UpDark.png"
@@ -367,11 +391,14 @@ const ContentDigital = () => {
               )}
               
               {/* FAQ section */}
-              <div className="bg-[#C5CED5] shadow-xl w-[calc(100%-40px)] lg:w-[1110px] ml-[40px] lg:ml-[105px] h-[60px] flex items-center mt-2">
+              <div 
+                className="bg-[#C5CED5] shadow-xl w-[calc(100%-40px)] lg:w-[1110px] ml-[40px] lg:ml-[105px] h-[60px] flex items-center mt-2 cursor-pointer"
+                onClick={() => setOperationsFAQExpanded(!operationsFAQExpanded)}
+              >
                 <p className="ml-6 lg:ml-8 text-[12px] lg:text-[18px] text-corvidian-1 font-bold my-auto flex-grow pr-4">
                   Pertanyaan yang sering ditanyakan (FAQ)
                 </p>
-                <div className="mr-[15px] lg:mr-[30px] cursor-pointer flex-shrink-0" onClick={() => setOperationsFAQExpanded(!operationsFAQExpanded)}>
+                <div className="mr-[15px] lg:mr-[30px] flex-shrink-0">
                   {operationsFAQExpanded ? (
                     <Image
                       src="/heroItInfra/UpDark.png"

@@ -96,6 +96,9 @@ export const FooterDesktop = () => {
                   <Link
                     key={link.label}
                     href={link.href}
+                    scroll={link.scroll}
+                    target={link.target}
+                    rel={link.rel}
                     className="transition-colors hover:text-[#15C0C4] whitespace-nowrap"
                   >
                     {link.label}
@@ -107,6 +110,9 @@ export const FooterDesktop = () => {
                   <Link
                     key={link.label}
                     href={link.href}
+                    scroll={link.scroll}
+                    target={link.target}
+                    rel={link.rel}
                     className="transition-colors hover:text-[#15C0C4] whitespace-nowrap"
                   >
                     {link.label}

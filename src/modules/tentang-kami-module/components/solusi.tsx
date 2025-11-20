@@ -39,7 +39,7 @@ const Solusi = () => {
   ];
 
   return (
-    <section className="w-full relative">
+    <section id="solusi" className="w-full relative">
       <div className="relative py-8 md:py-12 lg:py-16 z-10 mx-auto px-4 sm:px-6 lg:px-12">
         <div className="space-y-4 lg:space-y-6 w-full max-w-[1000px] mx-auto">
           <h1 className="text-xl md:text-2xl lg:text-3xl font-extrabold text-corvidian-1 leading-tight max-lg:text-center">

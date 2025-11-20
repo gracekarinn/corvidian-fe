@@ -12,17 +12,17 @@ const KataMereka = () => {
 
   const testimonials = [
     {
-      text: "Sebelum bekerja sama dengan Corvidian, banyak proses di MUC yang berjalan kurang efisien. Beberapa pekerjaan memerlukan waktu lebih lama karena sistem yang ada belum terintegrasi dengan baik. Setelah Corvidian hadir, semuanya berubah. Mereka memahami kebutuhan kami secara mendalam, merancang solusi yang tepat, dan memastikan setiap detail berjalan sesuai rencana. Hasilnya, koordinasi tim menjadi lebih lancar, pekerjaan lebih cepat terselesaikan, dan kinerja perusahaan meningkat signifikan. Corvidian bukan hanya penyedia teknologi, tetapi mitra strategis yang membantu kami bergerak maju.",
+      text: "Sebelum bekerja sama dengan Corvidian, aktivitas di MUC masih banyak dilakukan secara manual. Setelah Corvidian hadir, semuanya berubah. Mereka memahami kebutuhan kami, merancang solusi yang tepat, dan memastikan setiap detail berjalan lancar. Kini koordinasi tim lebih efisien, pekerjaan selesai lebih cepat, dan kinerja perusahaan meningkat signifikan. Corvidian bukan sekadar penyedia teknologi, tapi mitra strategis yang mendorong kami maju.",
       author: "~Sugianto",
       position: "Managing Partner MUC Consulting",
     },
     {
-      text: "Penggunaan LMS oleh pengajar dari Binawan bersama peserta dari Hong Kong memberikan pengalaman pembelajaran yang efisien dan interaktif. Platform ini memudahkan pengajar dalam menyampaikan materi secara online, serta memungkinkan peserta untuk mengakses informasi kapan saja dan di mana saja. Dengan fitur komunikasi dan evaluasi yang terintegrasi, LMS ini mendukung interaksi yang lebih baik antara pengajar dan peserta, serta memfasilitasi pemantauan perkembangan pembelajaran yang fleksibel dan terstruktur.",
+      text: "Penggunaan LMS Corvidian memudahkan pengajar dari Binawan dan peserta di Hong Kong dalam proses belajar yang lebih efisien dan interaktif. Platform ini memungkinkan penyampaian materi secara online serta akses informasi kapan saja dan di mana saja. Dengan fitur komunikasi dan evaluasi terintegrasi, LMS ini meningkatkan interaksi dan memudahkan pemantauan pembelajaran secara fleksibel dan terstruktur.",
       author: "~Januar Priatama",
       position: "Head of Project Binawan Inti Utama",
     },
     {
-      text: "Bagi MUC Law, tim support Corvidian adalah salah satu aset terbesar dalam kerja sama ini. Mereka selalu responsif, sigap memberikan diagnosa yang tepat, dan menyampaikan rencana tindakan yang jelas serta terukur. Setiap langkah penyelesaian selalu berbasis solusi, bukan sekadar perbaikan sementara. Kami juga sangat menghargai kesabaran mereka yang luar biasa dalam mendengarkan setiap kendala yang kami hadapi, sekaligus memberikan solusi yang tepat guna. Dukungan seperti ini membuat kami merasa aman dan yakin bahwa setiap tantangan akan selalu mendapatkan jalan keluarnya",
+      text: "Bagi MUC Law, tim support Corvidian adalah aset berharga. Mereka responsif, sigap mendiagnosis masalah, dan memberikan solusi yang terukur. Setiap penyelesaian selalu berbasis solusi, bukan perbaikan sementara. Kami sangat menghargai kesabaran dan kejelian tim Corvidian dalam mendengar kendala dan memberi solusi yang tepat. Dukungan mereka membuat kami yakin setiap tantangan selalu punya jalan keluarnya.",
       author: "~Kiki Amaruly",
       position: "Senior Associate MUC Attorney at Law",
     },
@@ -116,7 +116,7 @@ const KataMereka = () => {
   };
 
   return (
-    <section className="w-full h-full lg:h-auto">
+    <section id="testimoni" className="w-full h-full lg:h-auto">
       <div className="w-full h-full lg:h-auto relative">
         <div className="absolute inset-0 w-full h-full -z-10">
           <Image

@@ -47,7 +47,7 @@ const KataMerekaMobile = () => {
   };
 
   return (
-    <div className="relative w-full">
+    <section id="testimoni" className="relative w-full">
       <div className="relative text-[#F4F4F4]">
         <Image
           src="/schedule/vector-mobile.png"
@@ -105,7 +105,7 @@ const KataMerekaMobile = () => {
           </svg>
         </button>
       </div>
-    </div>
+    </section>
   );
 };
 

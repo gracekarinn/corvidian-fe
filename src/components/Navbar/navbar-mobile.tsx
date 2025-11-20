@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -9,6 +9,7 @@ import ProdukAplikasiSiapMobile from "./dropdowns/produk-dropdown/produk-aplikas
 import ProdukSolusiLayananMobile from "./dropdowns/produk-dropdown/produk-solusi-layanan.-mobile";
 import { WawasanDropdown } from "./dropdowns/wawasan-dropdown/wawasan-dropdown";
 import type { ArticlePreview } from "@/lib/api/wawasan-api";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 interface NavbarMobileProps {
   articles?: ArticlePreview[];
@@ -17,6 +18,9 @@ interface NavbarMobileProps {
 export const NavbarMobile = ({ articles = [] }: NavbarMobileProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const router = useRouter();
 
   const toggleSection = (section: string) => {
     setExpandedSection(expandedSection === section ? null : section);
@@ -34,6 +38,21 @@ export const NavbarMobile = ({ articles = [] }: NavbarMobileProps) => {
       setIsOpen(!isOpen);
     }
   };
+
+  useEffect(() => {
+    if (searchParams.get("openDropdown") === "produk") {
+      setIsOpen(true);
+      setExpandedSection("produk");
+      const params = new URLSearchParams(searchParams.toString());
+      params.delete("openDropdown");
+      const queryString = params.toString();
+      const hash = typeof window !== "undefined" ? window.location.hash : "";
+      router.replace(
+        `${queryString ? `${pathname}?${queryString}` : pathname}${hash}`,
+        { scroll: false }
+      );
+    }
+  }, [searchParams, pathname, router]);
 
   return (
     <>

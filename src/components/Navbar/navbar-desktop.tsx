@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { WawasanDropdown } from "./dropdowns/wawasan-dropdown/wawasan-dropdown";
 import { ProdukDropdown } from "./dropdowns/produk-dropdown/produk-dropdown";
 import type { ArticlePreview } from "@/lib/api/wawasan-api";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 type ActiveDropdown = "produk" | "wawasan" | null;
 
 interface Props {
@@ -15,6 +16,9 @@ interface Props {
 
 export const NavbarDesktop = ({ articles }: Props) => {
   const [activeDropdown, setActiveDropdown] = useState<ActiveDropdown>(null);
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const router = useRouter();
 
   const handleDropdownToggle = (dropdown: ActiveDropdown) => {
     setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
@@ -26,6 +30,20 @@ export const NavbarDesktop = ({ articles }: Props) => {
   };
 
   const currentConfig = activeDropdown ? dropdownConfigs[activeDropdown] : null;
+
+  useEffect(() => {
+    if (searchParams.get("openDropdown") === "produk") {
+      setActiveDropdown("produk");
+      const params = new URLSearchParams(searchParams.toString());
+      params.delete("openDropdown");
+      const queryString = params.toString();
+      const hash = typeof window !== "undefined" ? window.location.hash : "";
+      router.replace(
+        `${queryString ? `${pathname}?${queryString}` : pathname}${hash}`,
+        { scroll: false }
+      );
+    }
+  }, [searchParams, pathname, router]);
 
   return (
     <>

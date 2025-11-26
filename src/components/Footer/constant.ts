@@ -42,19 +42,19 @@ export const secondaryLinks: FooterLink[] = [
 
 export const SOCIAL_ICONS = [
   {
-    src: "/footer/Facebook.png",
+    src: "/footer/facebook.png",
     alt: "Facebook",
     label: "Facebook",
     href: "https://www.facebook.com/people/Corvidanio/61583910644103/",
   },
   {
-    src: "/footer/Instagram.png",
+    src: "/footer/instagram.png",
     alt: "Instagram",
     label: "Instagram",
     href: "https://www.instagram.com/corvidian.io",
   },
   {
-    src: "/footer/LinkedIn.png",
+    src: "/footer/linkedin.png",
     alt: "LinkedIn",
     label: "LinkedIn",
     href: "https://www.linkedin.com/company/corvidianindonesia/about",

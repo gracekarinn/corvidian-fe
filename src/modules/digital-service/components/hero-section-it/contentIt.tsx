@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useState, MouseEvent, useEffect } from 'react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
@@ -16,6 +16,63 @@ const ContentDigital = () => {
   const [securityFAQExpanded, setSecurityFAQExpanded] = useState(false)
   const [operationsDetailsExpanded, setOperationsDetailsExpanded] = useState(false)
   const [operationsFAQExpanded, setOperationsFAQExpanded] = useState(false)
+
+  const scrollToConsultation = (event: MouseEvent<HTMLElement>) => {
+    event.preventDefault()
+    const target = document.getElementById('konsultasi')
+    target?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
+  useEffect(() => {
+    const resetAll = () => {
+      setInfrastructureExpanded(false)
+      setInfrastructureDetailsExpanded(false)
+      setInfrastructureFAQExpanded(false)
+      setSecurityExpanded(false)
+      setSecurityDetailsExpanded(false)
+      setSecurityFAQExpanded(false)
+      setOperationsExpanded(false)
+      setOperationsDetailsExpanded(false)
+      setOperationsFAQExpanded(false)
+    }
+
+    const scrollToId = (id: string) => {
+      const el = document.getElementById(id)
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }, 150)
+      }
+    }
+
+    const openByHash = (target: string) => {
+      resetAll()
+      switch (target) {
+        case 'app-development-details':
+          setInfrastructureExpanded(true); setInfrastructureDetailsExpanded(true); scrollToId('app-development-details'); break
+        case 'app-development-faq':
+          setInfrastructureExpanded(true); setInfrastructureFAQExpanded(true); scrollToId('app-development-faq'); break
+        case 'app-uiux-details':
+          setSecurityExpanded(true); setSecurityDetailsExpanded(true); scrollToId('app-uiux-details'); break
+        case 'app-uiux-faq':
+          setSecurityExpanded(true); setSecurityFAQExpanded(true); scrollToId('app-uiux-faq'); break
+        case 'data-management-details':
+          setOperationsExpanded(true); setOperationsDetailsExpanded(true); scrollToId('data-management-details'); break
+        case 'data-management-faq':
+          setOperationsExpanded(true); setOperationsFAQExpanded(true); scrollToId('data-management-faq'); break
+        default:
+          break
+      }
+    }
+    const initialHash = window.location.hash.replace('#', '')
+    if (initialHash) openByHash(initialHash)
+    const listener = () => {
+      const newHash = window.location.hash.replace('#', '')
+      if (newHash) openByHash(newHash)
+    }
+    window.addEventListener('hashchange', listener)
+    return () => window.removeEventListener('hashchange', listener)
+  }, [])
 
   return (
     <div className='mb-[20px]'>
@@ -69,7 +126,9 @@ const ContentDigital = () => {
             <div className="mt-2 flex flex-col">
               {/* Details section */}
               <div 
+                id="app-development-details"
                 className="bg-[#C5CED5] shadow-xl w-[calc(100%-40px)] lg:w-[1110px] ml-[40px] lg:ml-[105px] h-[60px] flex items-center cursor-pointer"
+                style={{ scrollMarginTop: '140px' }}
                 onClick={() => setInfrastructureDetailsExpanded(!infrastructureDetailsExpanded)}
               >
                 <p className="ml-6 lg:ml-8 text-[12px] lg:text-[18px] text-corvidian-1 font-bold my-auto flex-grow pr-4">
@@ -111,8 +170,8 @@ const ContentDigital = () => {
                     <li>Enterprise Application Solutions</li>
                   </ul>
                   <div className="h-[40px] w-[130px] rounded-4xl flex items-center justify-center" style={{background:"linear-gradient(to right, #02C2B3, #1D1F26, #1D1F26, #1578CB)"}}>
-                    <Button variant="outline" size="sm" className="text-[12px] text-black font-bold w-fit rounded-2xl">
-                      <Link href='/digital-service' className='pointer'>Konsultasi Gratis</Link>
+                    <Button asChild variant="outline" size="sm" className="text-[12px] text-black font-bold w-fit rounded-2xl">
+                      <Link href="#konsultasi" scroll={false} onClick={scrollToConsultation} className='pointer'>Konsultasi Gratis</Link>
                     </Button>
                   </div>
                 </div>
@@ -120,7 +179,9 @@ const ContentDigital = () => {
               
               {/* FAQ section */}
               <div 
+                id="app-development-faq"
                 className="bg-[#C5CED5] shadow-xl w-[calc(100%-40px)] lg:w-[1110px] ml-[40px] lg:ml-[105px] h-[60px] flex items-center mt-2 cursor-pointer"
+                style={{ scrollMarginTop: '140px' }}
                 onClick={() => setInfrastructureFAQExpanded(!infrastructureFAQExpanded)}
               >
                 <p className="ml-6 lg:ml-8 text-[12px] lg:text-[18px] text-corvidian-1 font-bold my-auto flex-grow pr-4">
@@ -159,8 +220,8 @@ const ContentDigital = () => {
                     <p className="text-[12px] lg:text-sm">Ya, kami dapat menggunakan teknologi cross-platform untuk deployment di kedua platform secara efisien.</p>
                   </div>
                   <div className="h-[40px] w-[130px] rounded-4xl flex items-center justify-center" style={{background:"linear-gradient(to right, #02C2B3, #1D1F26, #1D1F26, #1578CB)"}}>
-                    <Button variant="outline" size="sm" className="text-[12px] text-black font-bold w-fit rounded-2xl">
-                      <Link href='/digital-service' className='pointer'>Konsultasi Gratis</Link>
+                    <Button asChild variant="outline" size="sm" className="text-[12px] text-black font-bold w-fit rounded-2xl">
+                      <Link href="#konsultasi" scroll={false} onClick={scrollToConsultation} className='pointer'>Konsultasi Gratis</Link>
                     </Button>
                   </div>
                 </div>
@@ -205,7 +266,9 @@ const ContentDigital = () => {
             <div className="mt-2 flex flex-col">
               {/* Details section */}
               <div 
+                id="app-uiux-details"
                 className="bg-[#C5CED5] shadow-xl w-[calc(100%-40px)] lg:w-[1110px] ml-[40px] lg:ml-[105px] h-[60px] flex items-center cursor-pointer"
+                style={{ scrollMarginTop: '140px' }}
                 onClick={() => setSecurityDetailsExpanded(!securityDetailsExpanded)}
               >
                 <p className="ml-6 lg:ml-8 text-[12px] lg:text-[18px] text-corvidian-1 font-bold my-auto flex-grow pr-4">
@@ -247,8 +310,8 @@ const ContentDigital = () => {
                     <li>Usability testing & design iteration</li>
                   </ul>
                   <div className="h-[40px] w-[130px] rounded-4xl flex items-center justify-center" style={{background:"linear-gradient(to right, #02C2B3, #1D1F26, #1D1F26, #1578CB)"}}>
-                    <Button variant="outline" size="sm" className="text-[12px] text-black font-bold w-fit rounded-2xl">
-                      <Link href='/digital-service' className='pointer'>Konsultasi Gratis</Link>
+                    <Button asChild variant="outline" size="sm" className="text-[12px] text-black font-bold w-fit rounded-2xl">
+                      <Link href="#konsultasi" scroll={false} onClick={scrollToConsultation} className='pointer'>Konsultasi Gratis</Link>
                     </Button>
                   </div>
                 </div>
@@ -256,7 +319,9 @@ const ContentDigital = () => {
               
               {/* FAQ section */}
               <div 
+                id="app-uiux-faq"
                 className="bg-[#C5CED5] shadow-xl w-[calc(100%-40px)] lg:w-[1110px] ml-[40px] lg:ml-[105px] h-[60px] flex items-center mt-2 cursor-pointer"
+                style={{ scrollMarginTop: '140px' }}
                 onClick={() => setSecurityFAQExpanded(!securityFAQExpanded)}
               >
                 <p className="ml-6 lg:ml-8 text-[12px] lg:text-[18px] text-corvidian-1 font-bold my-auto flex-grow pr-4">
@@ -295,8 +360,8 @@ const ContentDigital = () => {
                     <p className="text-[12px] lg:text-sm">Ya, kami dapat melakukan audit UX dan redesign untuk meningkatkan usability dan visual appeal aplikasi existing.</p>
                   </div>
                   <div className="h-[40px] w-[130px] rounded-4xl flex items-center justify-center" style={{background:"linear-gradient(to right, #02C2B3, #1D1F26, #1D1F26, #1578CB)"}}>
-                    <Button variant="outline" size="sm" className="text-[12px] text-black font-bold w-fit rounded-2xl">
-                      <Link href='/digital-service' className='pointer'>Konsultasi Gratis</Link>
+                    <Button asChild variant="outline" size="sm" className="text-[12px] text-black font-bold w-fit rounded-2xl">
+                      <Link href="#konsultasi" scroll={false} onClick={scrollToConsultation} className='pointer'>Konsultasi Gratis</Link>
                     </Button>
                   </div>
                 </div>
@@ -341,7 +406,9 @@ const ContentDigital = () => {
             <div className="mt-2 flex flex-col">
               {/* Details section */}
               <div 
+                id="data-management-details"
                 className="bg-[#C5CED5] shadow-xl w-[calc(100%-40px)] lg:w-[1110px] ml-[40px] lg:ml-[105px] h-[60px] flex items-center cursor-pointer"
+                style={{ scrollMarginTop: '140px' }}
                 onClick={() => setOperationsDetailsExpanded(!operationsDetailsExpanded)}
               >
                 <p className="ml-6 lg:ml-8 text-[12px] lg:text-[18px] text-corvidian-1 font-bold my-auto flex-grow pr-4">
@@ -383,8 +450,8 @@ const ContentDigital = () => {
                     <li>Technical support & system maintenance</li>
                   </ul>
                   <div className="h-[40px] w-[130px] rounded-4xl flex items-center justify-center" style={{background:"linear-gradient(to right, #02C2B3, #1D1F26, #1D1F26, #1578CB)"}}>
-                    <Button variant="outline" size="sm" className="text-[12px] text-black font-bold w-fit rounded-2xl">
-                      <Link href='/digital-service' className='pointer'>Konsultasi Gratis</Link>
+                    <Button asChild variant="outline" size="sm" className="text-[12px] text-black font-bold w-fit rounded-2xl">
+                      <Link href="#konsultasi" scroll={false} onClick={scrollToConsultation} className='pointer'>Konsultasi Gratis</Link>
                     </Button>
                   </div>
                 </div>
@@ -392,7 +459,9 @@ const ContentDigital = () => {
               
               {/* FAQ section */}
               <div 
+                id="data-management-faq"
                 className="bg-[#C5CED5] shadow-xl w-[calc(100%-40px)] lg:w-[1110px] ml-[40px] lg:ml-[105px] h-[60px] flex items-center mt-2 cursor-pointer"
+                style={{ scrollMarginTop: '140px' }}
                 onClick={() => setOperationsFAQExpanded(!operationsFAQExpanded)}
               >
                 <p className="ml-6 lg:ml-8 text-[12px] lg:text-[18px] text-corvidian-1 font-bold my-auto flex-grow pr-4">
@@ -431,8 +500,8 @@ const ContentDigital = () => {
                     <p className="text-[12px] lg:text-sm">Ya, kami menyediakan SLA yang jelas dengan guaranteed uptime dan response time untuk critical issues.</p>
                   </div>
                   <div className="h-[40px] w-[130px] rounded-4xl flex items-center justify-center" style={{background:"linear-gradient(to right, #02C2B3, #1D1F26, #1D1F26, #1578CB)"}}>
-                    <Button variant="outline" size="sm" className="text-[12px] text-black font-bold w-fit rounded-2xl">
-                      <Link href='/digital-service' className='pointer'>Konsultasi Gratis</Link>
+                    <Button asChild variant="outline" size="sm" className="text-[12px] text-black font-bold w-fit rounded-2xl">
+                      <Link href="#konsultasi" scroll={false} onClick={scrollToConsultation} className='pointer'>Konsultasi Gratis</Link>
                     </Button>
                   </div>
                 </div>

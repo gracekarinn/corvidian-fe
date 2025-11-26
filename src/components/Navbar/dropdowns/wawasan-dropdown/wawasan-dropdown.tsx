@@ -18,7 +18,7 @@ export const WawasanDropdown = ({ articles, onLinkClick }: Props) => {
       {/* Desktop Version */}
       <div className="hidden lg:flex flex-col max-h-[700px] overflow-hidden rounded-2xl">
         <div className="p-6 pb-4 flex-shrink-0">
-          <Link href="/portofolio" className="pointer">
+          <Link href="/portofolio" className="pointer" onClick={onLinkClick}>
             <WawasanCard />
           </Link>
         </div>
@@ -35,6 +35,7 @@ export const WawasanDropdown = ({ articles, onLinkClick }: Props) => {
                   key={item.id}
                   href={`/tentang-kami/wawasan/${item.slug}`}
                   className="block"
+                  onClick={onLinkClick}
                 >
                   <WawasanNews
                     image={item.cover_image}

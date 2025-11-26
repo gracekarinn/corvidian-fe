@@ -25,8 +25,8 @@ export const NavbarDesktop = ({ articles }: Props) => {
   };
 
   const dropdownConfigs = {
-    produk: { width: 1000, content: <ProdukDropdown /> },
-    wawasan: { width: 760, content: <WawasanDropdown articles={articles} /> },
+    produk: { width: 1000, content: <ProdukDropdown onLinkClick={() => setActiveDropdown(null)} /> },
+    wawasan: { width: 760, content: <WawasanDropdown articles={articles} onLinkClick={() => setActiveDropdown(null)} /> },
   };
 
   const currentConfig = activeDropdown ? dropdownConfigs[activeDropdown] : null;

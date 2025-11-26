@@ -1,10 +1,17 @@
-import React from 'react'
+"use client"
+import React, { MouseEvent } from 'react'
 import Image from 'next/image'
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import ContentIt from '../components/hero-section-it/contentIt';
 
 const HeroSectionIt = () => {
+  const scrollToConsultation = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault()
+    const target = document.getElementById('konsultasi')
+    target?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
   return (
     <div className='w-full max-w-[1550px] relative overflow-hidden'>
         {/* Background elements - Desktop */}
@@ -63,7 +70,7 @@ const HeroSectionIt = () => {
                     size="lg"
                     className="bg-corvidian-2 hover:bg-corvidian-5 text-white hover:border border-black hover:text-corvidian-1 font-bold relative z-50 cursor-pointer text-[12px] lg:text-base px-4 lg:px-6 h-10 lg:h-11"
                   >
-                    <Link href="/konsultasi">Konsultasi Gratis</Link>
+                    <Link href="#konsultasi" scroll={false} onClick={scrollToConsultation}>Konsultasi Gratis</Link>
                   </Button>
                 </div>  
           </div>

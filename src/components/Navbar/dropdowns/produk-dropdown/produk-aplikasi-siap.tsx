@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const ProdukAplikasiSiap = () => {
 
@@ -69,7 +70,7 @@ const ProdukAplikasiSiap = () => {
     {/* Column 1 - Operations & General */}
                   <div className="mt-6 space-y-4 flex flex-col gap-[10px]">
                     {operationsGeneral.map((service, index) => (
-                      <div key={index} className="flex items-start gap-3">
+                      <Link href="#" key={`operations-${index}`} className="flex items-start gap-3 cursor-default">
                         <div className="flex-shrink-0">
                           <Image 
                             src={service.icon} 
@@ -87,14 +88,14 @@ const ProdukAplikasiSiap = () => {
                             {service.description}
                           </p>
                         </div>
-                      </div>
+                      </Link>
                     ))}
                   </div>
 
                   {/* Column 2 - Human Capital */}
                   <div className="mt-6 space-y-4 flex flex-col gap-[10px]">
                     {humanCapital.map((service, index) => (
-                      <div key={index} className="flex items-start gap-3">
+                      <Link href="#" key={`humancap-${index}`} className="flex items-start gap-3 cursor-default">
                         <div className="flex-shrink-0">
                           <Image 
                             src={service.icon} 
@@ -112,14 +113,14 @@ const ProdukAplikasiSiap = () => {
                             {service.description}
                           </p>
                         </div>
-                      </div>
+                      </Link>
                     ))}
                   </div>
 
                   {/* Column 3 - Information */}
                   <div className="mt-6 space-y-4 flex flex-col gap-[10px]">
                     {information.map((service, index) => (
-                      <div key={index} className="flex items-start gap-3">
+                      <Link href="#" key={`information-${index}`} className="flex items-start gap-3 cursor-default">
                         <div className="flex-shrink-0">
                           <Image 
                             src={service.icon} 
@@ -137,14 +138,14 @@ const ProdukAplikasiSiap = () => {
                             {service.description}
                           </p>
                         </div>
-                      </div>
+                      </Link>
                     ))}
                   </div>
 
                   {/* Column 4 - Design System */}
                   <div className="mt-6 space-y-4 flex flex-col gap-[10px]">
                     {designSystem.map((service, index) => (
-                      <div key={index} className="flex items-start gap-3">
+                      <Link href="#" key={`design-${index}`} className="flex items-start gap-3 cursor-default">
                         <div className="flex-shrink-0">
                           <Image 
                             src={service.icon} 
@@ -162,7 +163,7 @@ const ProdukAplikasiSiap = () => {
                             {service.description}
                           </p>
                         </div>
-                      </div>
+                      </Link>
                     ))}
                   </div>
     </div>

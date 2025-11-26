@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, MouseEvent } from 'react'
 import { Button } from "@/components/ui/button";
 import Image from 'next/image'
 import Link from 'next/link'
@@ -27,6 +27,11 @@ const ContentIt = () => {
       });
     }
   }, []);
+
+  const scrollToConsultation = useCallback((event: MouseEvent<HTMLElement>) => {
+    event.preventDefault()
+    scrollToElement('konsultasi')
+  }, [scrollToElement])
 
   // Handle hash navigation - wrapped in useCallback to prevent recreation
   const handleHashNavigation = useCallback((hash: string) => {
@@ -234,8 +239,8 @@ const ContentIt = () => {
                     <li>Layanan cloud dan hybrid cloud</li>
                   </ul>
                   <div className="h-[40px] w-[130px] rounded-4xl flex items-center justify-center" style={{background:"linear-gradient(to right, #02C2B3, #1D1F26, #1D1F26, #1578CB)"}}>
-                    <Button variant="outline" size="sm" className="text-[12px] text-black font-bold w-fit rounded-2xl">
-                      <Link href='/it-infrastructure' className='pointer'>Konsultasi Gratis</Link>
+                    <Button asChild variant="outline" size="sm" className="text-[12px] text-black font-bold w-fit rounded-2xl">
+                      <Link href="#konsultasi" scroll={false} onClick={scrollToConsultation} className='pointer'>Konsultasi Gratis</Link>
                     </Button>
                   </div>
                 </div>
@@ -283,8 +288,8 @@ const ContentIt = () => {
                     <p className="text-[12px] lg:text-sm">Ya, kami menyediakan layanan maintenance sebagai bagian dari kontrak layanan berkelanjutan.</p>
                   </div>
                   <div className="h-[40px] w-[130px] rounded-4xl flex items-center justify-center" style={{background:"linear-gradient(to right, #02C2B3, #1D1F26, #1D1F26, #1578CB)"}}>
-                    <Button variant="outline" size="sm" className="text-[12px] text-black font-bold w-fit rounded-2xl">
-                      <Link href='/it-infrastructure' className='pointer'>Konsultasi Gratis</Link>
+                    <Button asChild variant="outline" size="sm" className="text-[12px] text-black font-bold w-fit rounded-2xl">
+                      <Link href="#konsultasi" scroll={false} onClick={scrollToConsultation} className='pointer'>Konsultasi Gratis</Link>
                     </Button>
                   </div>
                 </div>
@@ -372,8 +377,8 @@ const ContentIt = () => {
                     <li>Perencanaan pemulihan bencana dan kontinuitas bisnis</li>
                   </ul>
                   <div className="h-[40px] w-[130px] rounded-4xl flex items-center justify-center" style={{background:"linear-gradient(to right, #02C2B3, #1D1F26, #1D1F26, #1578CB)"}}>
-                    <Button variant="outline" size="sm" className="text-[12px] text-black font-bold w-fit rounded-2xl">
-                      <Link href='/it-infrastructure' className='pointer'>Konsultasi Gratis</Link>
+                    <Button asChild variant="outline" size="sm" className="text-[12px] text-black font-bold w-fit rounded-2xl">
+                      <Link href="#konsultasi" scroll={false} onClick={scrollToConsultation} className='pointer'>Konsultasi Gratis</Link>
                     </Button>
                   </div>
                 </div>
@@ -421,8 +426,8 @@ const ContentIt = () => {
                     <p className="text-[12px] lg:text-sm">Kami mengikuti standar industri seperti ISO 27001, NIST, dan praktik terbaik keamanan siber terkini.</p>
                   </div>
                   <div className="h-[40px] w-[130px] rounded-4xl flex items-center justify-center" style={{background:"linear-gradient(to right, #02C2B3, #1D1F26, #1D1F26, #1578CB)"}}>
-                    <Button variant="outline" size="sm" className="text-[12px] text-black font-bold w-fit rounded-2xl">
-                      <Link href='/it-infrastructure' className='pointer'>Konsultasi Gratis</Link>
+                    <Button asChild variant="outline" size="sm" className="text-[12px] text-black font-bold w-fit rounded-2xl">
+                      <Link href="#konsultasi" scroll={false} onClick={scrollToConsultation} className='pointer'>Konsultasi Gratis</Link>
                     </Button>
                   </div>
                 </div>
@@ -510,8 +515,8 @@ const ContentIt = () => {
                     <li>Layanan TI terkelola dan konsultasi strategis</li>
                   </ul>
                   <div className="h-[40px] w-[130px] rounded-4xl flex items-center justify-center" style={{background:"linear-gradient(to right, #02C2B3, #1D1F26, #1D1F26, #1578CB)"}}>
-                    <Button variant="outline" size="sm" className="text-[12px] text-black font-bold w-fit rounded-2xl">
-                      <Link href='/it-infrastructure' className='pointer'>Konsultasi Gratis</Link>
+                    <Button asChild variant="outline" size="sm" className="text-[12px] text-black font-bold w-fit rounded-2xl">
+                      <Link href="#konsultasi" scroll={false} onClick={scrollToConsultation} className='pointer'>Konsultasi Gratis</Link>
                     </Button>
                   </div>
                 </div>
@@ -559,8 +564,8 @@ const ContentIt = () => {
                     <p className="text-[12px] lg:text-sm">Masalah kritis memiliki waktu respon awal kurang dari 15 menit dan penanganan prioritas.</p>
                   </div>
                   <div className="h-[40px] w-[130px] rounded-4xl flex items-center justify-center" style={{background:"linear-gradient(to right, #02C2B3, #1D1F26, #1D1F26, #1578CB)"}}>
-                    <Button variant="outline" size="sm" className="text-[12px] text-black font-bold w-fit rounded-2xl">
-                      <Link href='/it-infrastructure' className='pointer'>Konsultasi Gratis</Link>
+                    <Button asChild variant="outline" size="sm" className="text-[12px] text-black font-bold w-fit rounded-2xl">
+                      <Link href="#konsultasi" scroll={false} onClick={scrollToConsultation} className='pointer'>Konsultasi Gratis</Link>
                     </Button>
                   </div>                  
                 </div>

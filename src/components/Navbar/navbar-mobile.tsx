@@ -123,7 +123,7 @@ export const NavbarMobile = ({ articles = [] }: NavbarMobileProps) => {
                             <h3 className="text-xs font-semibold text-[#02C2B3] mb-3">
                               Aplikasi Siap Pakai
                             </h3>
-                            <ProdukAplikasiSiapMobile />
+                            <ProdukAplikasiSiapMobile onLinkClick={handleClose} />
                           </div>
                         </div>
                       </motion.div>

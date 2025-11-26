@@ -2,7 +2,11 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const ProdukAplikasiSiapMobile = () => {
+interface ProdukAplikasiSiapMobileProps {
+  onLinkClick?: () => void
+}
+
+const ProdukAplikasiSiapMobile = ({ onLinkClick }: ProdukAplikasiSiapMobileProps) => {
 
   const operationsGeneral = [
     {
@@ -80,9 +84,10 @@ const ProdukAplikasiSiapMobile = () => {
   return (
     <div className="flex flex-col w-full mt-[10px] gap-4">
       {allApps.map((service, index) => (
-        <Link 
-          key={index} 
+        <Link
+          key={index}
           href={service.link}
+          onClick={onLinkClick}
           className="flex items-start gap-3 hover:bg-gray-50 p-2 rounded-lg transition-colors"
         >
           <div className="flex-shrink-0">

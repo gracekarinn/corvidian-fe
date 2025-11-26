@@ -1,6 +1,9 @@
+/** @jsxImportSource react */
+"use client"
 import React from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import { useRouter } from 'next/navigation'
 
 interface ServiceItem {
   title: string;
@@ -19,6 +22,24 @@ interface ProdukSolusiLayananMobileProps {
 }
 
 const ProdukSolusiLayananMobile = ({ onLinkClick }: ProdukSolusiLayananMobileProps) => {
+  const router = useRouter()
+
+  const handleNavClick = (href: string) => (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault()
+    onLinkClick?.()
+    const [path, hash] = href.split('#')
+    const currentPath = typeof window !== 'undefined' ? window.location.pathname : ''
+
+    router.push(href, { scroll: false })
+
+    if (hash && currentPath === path) {
+      requestAnimationFrame(() => {
+        window.location.hash = hash
+        window.dispatchEvent(new HashChangeEvent('hashchange'))
+      })
+    }
+  }
+
   const serviceCategories: ServiceCategory[] = [
     {
       title: "IT Infrastructure",
@@ -27,17 +48,17 @@ const ProdukSolusiLayananMobile = ({ onLinkClick }: ProdukSolusiLayananMobilePro
         {
           title: "Pembuatan & Instalasi Jaringan",
           description: "(LAN/WAN, Wireless, dan VLAN)",
-          link: "/layanan/it-infrastructure/jaringan",
+          link: "/it-infrastructure#infrastructure-details",
         },
         {
           title: "Pengaturan & Keamanan Perangkat Jaringan",
           description: "(Router, Switch, dan Firewall)",
-          link: "/layanan/it-infrastructure/keamanan",
+          link: "/it-infrastructure#security-details",
         },
         {
           title: "Pemeliharaan & Pemantauan Jaringan",
           description: "Monitoring dan maintenance",
-          link: "/layanan/it-infrastructure/pemeliharaan",
+          link: "/it-infrastructure#operations-details",
         },
       ],
     },
@@ -48,17 +69,17 @@ const ProdukSolusiLayananMobile = ({ onLinkClick }: ProdukSolusiLayananMobilePro
         {
           title: "Pembuatan Website",
           description: "(Company Profile, Landing Page)",
-          link: "/layanan/web/pembuatan",
+          link: "/web-design-development#web-creation-details",
         },
         {
           title: "Desain UI/UX",
           description: "(UI/UX Website)",
-          link: "/layanan/web/desain",
+          link: "/web-design-development#web-uiux-details",
         },
         {
           title: "Pemeliharaan & Optimalisasi Website",
           description: "(Maintenance dan Konsultasi)",
-          link: "/layanan/web/pemeliharaan",
+          link: "/web-design-development#web-maintenance-details",
         },
       ],
     },
@@ -69,17 +90,17 @@ const ProdukSolusiLayananMobile = ({ onLinkClick }: ProdukSolusiLayananMobilePro
         {
           title: "Pengembangan Aplikasi",
           description: "(Mobile & Desktop App)",
-          link: "/layanan/software/aplikasi",
+          link: "/digital-software-solution#app-development-details",
         },
         {
           title: "Desain UI/UX",
           description: "(UI/UX Aplikasi)",
-          link: "/layanan/software/desain",
+          link: "/digital-software-solution#app-uiux-details",
         },
         {
           title: "Pemeliharaan Sistem & Manajemen Data",
           description: "(Perawatan & Manajemen Data)",
-          link: "/layanan/software/pemeliharaan",
+          link: "/digital-software-solution#data-management-details",
         },
       ],
     },
@@ -101,7 +122,7 @@ const ProdukSolusiLayananMobile = ({ onLinkClick }: ProdukSolusiLayananMobilePro
               <Link 
                 href={category.link} 
                 className='pointer' 
-                onClick={onLinkClick}
+                onClick={handleNavClick(category.link)}
               >
                 {category.title}
               </Link>
@@ -114,7 +135,7 @@ const ProdukSolusiLayananMobile = ({ onLinkClick }: ProdukSolusiLayananMobilePro
                 <Link
                   href={item.link}
                   className="text-sm text-black hover:text-[#02C2B3] block transition-colors font-semibold"
-                  onClick={onLinkClick}
+                  onClick={handleNavClick(item.link)}
                 >
                   {item.title}
                 </Link>

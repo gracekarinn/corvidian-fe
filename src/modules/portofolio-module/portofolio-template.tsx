@@ -2,7 +2,6 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import Image from 'next/image'
 
-// Interface untuk Technology Environment
 export interface TechnologyEnvironment {
   name: string
   icon: string
@@ -10,7 +9,6 @@ export interface TechnologyEnvironment {
   height: number
 }
 
-// Interface untuk Portofolio Images
 export interface PortofolioImage {
   src: string
   alt: string
@@ -20,17 +18,15 @@ export interface PortofolioImage {
   modalHeight?: number
 }
 
-// Interface untuk Props Component
 export interface PortofolioTemplateProps {
   titleLine1: string
   titleLine2: string
   description: string
-  mainImage?: string // Optional, default ke laptop.png
+  mainImage?: string
   technologies: TechnologyEnvironment[]
   portfolioImages: PortofolioImage[]
 }
 
-// Data constants untuk environment technologies yang tersedia
 export const AVAILABLE_TECHNOLOGIES = {
   PHP: {
     name: 'PHP',
@@ -66,7 +62,6 @@ const PortofolioTemplate: React.FC<PortofolioTemplateProps> = ({
   technologies,
   portfolioImages,
 }) => {
-  // Modal state: src gambar yang sedang dibuka
   const [modalImage, setModalImage] = useState<PortofolioImage | null>(null)
   const [zoomLevel, setZoomLevel] = useState(1)
 
@@ -87,7 +82,6 @@ const PortofolioTemplate: React.FC<PortofolioTemplateProps> = ({
     resetZoom()
   }, [])
 
-  // disable body scroll saat modal terbuka
   useEffect(() => {
     if (modalImage) {
       const original = document.body.style.overflow
@@ -98,7 +92,6 @@ const PortofolioTemplate: React.FC<PortofolioTemplateProps> = ({
     }
   }, [modalImage])
 
-  // close modal on Esc
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') closeModal()
@@ -111,7 +104,6 @@ const PortofolioTemplate: React.FC<PortofolioTemplateProps> = ({
     <section className="w-full relative">
       <div className="flex flex-row mb-[100px]">
         <div className="flex flex-col w-1/2">
-          {/* Judul Section */}
           <div 
             className="relative" 
             style={{
@@ -133,6 +125,8 @@ const PortofolioTemplate: React.FC<PortofolioTemplateProps> = ({
               alt="Portfolio Main Image"
               width={650}
               height={481.84}
+              quality={100}
+              priority
               style={{zIndex: 0}}
               className="absolute object-contain ms-[100px] top-[120px]"
             />
@@ -144,7 +138,6 @@ const PortofolioTemplate: React.FC<PortofolioTemplateProps> = ({
             <h1 className="text-xl max-sm:max-w-[330px] md:text-3xl font-extrabold text-corvidian-1 leading-tight max-[350px]:text-2xl max-[350px]:!max-w-[250px]">
               Gambaran Umum
             </h1>
-            {/* Foto Environment - Fixed/Tidak dapat diganti */}
             <div className="flex flex-row gap-3 items-center">
               {technologies.map((tech, index) => (
                 <Image
@@ -153,6 +146,7 @@ const PortofolioTemplate: React.FC<PortofolioTemplateProps> = ({
                   alt={tech.name}
                   width={tech.width}
                   height={tech.height}
+                  quality={100}
                   style={{zIndex: 0}}
                   className="object-contain"
                 />
@@ -160,7 +154,6 @@ const PortofolioTemplate: React.FC<PortofolioTemplateProps> = ({
             </div>
           </div>
 
-          {/* Deskripsi Section */}
           <p className='text-[14px] pt-4 text-justify text-black'>
             {description}
           </p>
@@ -168,7 +161,6 @@ const PortofolioTemplate: React.FC<PortofolioTemplateProps> = ({
       </div>
 
       <div className="relative flex flex-col w-full top-[40px] gap-[25px] justify-center items-center mb-[170px]">
-        {/* Foto Portofolio - Dapat diganti */}
         <div className="flex flex-row gap-[10px] items-center">
           {portfolioImages.map((image, index) => (
             <button
@@ -181,11 +173,12 @@ const PortofolioTemplate: React.FC<PortofolioTemplateProps> = ({
               <Image
                 src={image.src}
                 alt={image.alt}
-                width={image.modalWidth ?? image.width}
-                height={image.modalHeight ?? image.height}
+                width={image.width}
+                height={image.height}
                 sizes={`(max-width: 768px) 90vw, ${image.width}px`}
                 quality={100}
-                style={{ zIndex: 0, width: image.width, height: image.height }}
+                priority={index === 0}
+                style={{ zIndex: 0 }}
                 className="object-contain"
               />
             </button>
@@ -193,13 +186,12 @@ const PortofolioTemplate: React.FC<PortofolioTemplateProps> = ({
         </div>
       </div>
 
-      {/* Modal */}
       {modalImage && (
         <div
           role="dialog"
           aria-modal="true"
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md transition-opacity cursor-pointer"
-          onClick={() => closeModal()} // klik sekali pada overlay akan menutup modal
+          onClick={() => closeModal()}
         >
           <div
             className="max-w-[90vw] max-h-[90vh] p-4"
@@ -207,16 +199,18 @@ const PortofolioTemplate: React.FC<PortofolioTemplateProps> = ({
           >
             <div className="w-full h-full rounded shadow-lg bg-transparent flex items-center justify-center relative overflow-hidden">
               <div className="overflow-auto max-h-[80vh] max-w-[90vw] flex items-center justify-center">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={modalImage.src}
                   alt={modalImage.alt || 'Gambar portofolio'}
                   width={modalImage.modalWidth ?? modalImage.width}
                   height={modalImage.modalHeight ?? modalImage.height}
+                  quality={100}
+                  priority
                   className="rounded object-contain"
-                  style={{ transform: `scale(${zoomLevel})`, transformOrigin: 'center center' }}
-                  loading="lazy"
-                  decoding="async"
+                  style={{ 
+                    transform: `scale(${zoomLevel})`, 
+                    transformOrigin: 'center center' 
+                  }}
                 />
               </div>
               <div className="absolute bottom-4 right-4 flex gap-2">
@@ -241,7 +235,6 @@ const PortofolioTemplate: React.FC<PortofolioTemplateProps> = ({
               </div>
             </div>
           </div>
-          {/* close button removed */}
         </div>
       )}
     </section>

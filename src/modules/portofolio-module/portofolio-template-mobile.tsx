@@ -2,7 +2,6 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import Image from 'next/image'
 
-// Interface untuk Technology Environment
 export interface TechnologyEnvironment {
   name: string
   icon: string
@@ -10,15 +9,15 @@ export interface TechnologyEnvironment {
   height: number
 }
 
-// Interface untuk Portofolio Images
 export interface PortofolioImage {
   src: string
   alt: string
   width: number
   height: number
+  modalWidth?: number
+  modalHeight?: number
 }
 
-// Interface untuk Props Component
 export interface PortofolioTemplateMobileProps {
   titleLine1: string
   titleLine2: string
@@ -28,7 +27,6 @@ export interface PortofolioTemplateMobileProps {
   portfolioImages: PortofolioImage[]
 }
 
-// Data constants untuk environment technologies yang tersedia
 export const AVAILABLE_TECHNOLOGIES = {
   PHP: {
     name: 'PHP',
@@ -64,166 +62,164 @@ const PortofolioTemplateMobile: React.FC<PortofolioTemplateMobileProps> = ({
   technologies,
   portfolioImages,
 }) => {
-  const [modalSrc, setModalSrc] = useState<string | null>(null)
-  const [modalAlt, setModalAlt] = useState<string>('')
+  const [modalImage, setModalImage] = useState<PortofolioImage | null>(null)
+  const [zoomLevel, setZoomLevel] = useState(1)
 
-  const openModal = (src: string, alt = '') => {
-    setModalSrc(src)
-    setModalAlt(alt)
+  const resetZoom = () => setZoomLevel(1)
+  const adjustZoom = (delta: number) => {
+    setZoomLevel((prev) => {
+      const next = Math.min(3, Math.max(1, parseFloat((prev + delta).toFixed(2))))
+      return next
+    })
   }
-  
+
+  const openModal = (image: PortofolioImage) => {
+    setModalImage(image)
+    resetZoom()
+  }
   const closeModal = useCallback(() => {
-    setModalSrc(null)
-    setModalAlt('')
+    setModalImage(null)
+    resetZoom()
   }, [])
 
-  // Disable body scroll saat modal terbuka
   useEffect(() => {
-    if (modalSrc) {
+    if (modalImage) {
       const original = document.body.style.overflow
       document.body.style.overflow = 'hidden'
       return () => {
         document.body.style.overflow = original
       }
     }
-  }, [modalSrc])
+  }, [modalImage])
 
-  // Close modal on Esc
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') closeModal()
     }
-    if (modalSrc) document.addEventListener('keydown', onKey)
+    if (modalImage) document.addEventListener('keydown', onKey)
     return () => document.removeEventListener('keydown', onKey)
-  }, [modalSrc, closeModal])
+  }, [modalImage, closeModal])
 
   return (
-    <section className="w-full relative mb-16">
-      {/* Judul Section dengan Background Shape */}
-      <div className="relative mb-8">
-        <div 
-          className="relative overflow-hidden" 
-          style={{
-            backgroundImage: 'url(/tentangkami/shape.png)', 
-            backgroundSize: 'cover',
-            height: '320px'
-          }}
-        >
-          {/* Title Section */}
-          <div className="relative top-8 px-6 flex flex-col gap-1.5">
-            <p className="text-lg md:text-xl font-extrabold text-white leading-tight">
-              {titleLine1}
-            </p>
-            <p className="text-lg md:text-xl font-extrabold text-corvidian-3 leading-tight">
-              {titleLine2}
-            </p>
-          </div>
-          
-          {/* Main Image - Positioned di tengah bawah */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-full flex justify-center">
-            <Image
-              src={mainImage}
-              alt="Portfolio Main Image"
-              width={320}
-              height={257}
-              style={{zIndex: 1}}
-              className="object-contain"
-            />
-          </div>
+    <section className="w-full px-4 mb-16">
+      <div className="flex flex-col gap-6">
+        <div className="text-center">
+          <h2 className="text-2xl font-extrabold text-corvidian-1 leading-tight">
+            {titleLine1}
+          </h2>
+          <h2 className="text-2xl font-extrabold text-corvidian-3 leading-tight">
+            {titleLine2}
+          </h2>
         </div>
-      </div>
 
-      {/* Gambaran Umum Section */}
-      <div className="flex flex-col gap-6 mb-10 px-8">
-        {/* Header dengan Technologies */}
+        <div className="w-full flex justify-center">
+          <Image
+            src={mainImage}
+            alt="Portfolio Main Image"
+            width={400}
+            height={300}
+            quality={100}
+            priority
+            className="object-contain w-full max-w-md"
+          />
+        </div>
+
         <div className="flex flex-col gap-4">
-          <div className="flex flex-row justify-between items-start">
-            <h2 className="text-base md:text-lg font-extrabold text-corvidian-1">
+          <div className="flex justify-between items-center">
+            <h3 className="text-xl font-extrabold text-corvidian-1">
               Gambaran Umum
-            </h2>
-            
-            {/* Technology Icons */}
-            <div className="flex flex-row gap-2 items-center flex-wrap justify-end max-w-[180px]">
+            </h3>
+            <div className="flex gap-2 items-center">
               {technologies.map((tech, index) => (
-                <div key={`${tech.name}-${index}`} className="flex-shrink-0">
-                  <Image
-                    src={tech.icon}
-                    alt={tech.name}
-                    width={tech.width * 0.55}
-                    height={tech.height * 0.55}
-                    style={{zIndex: 0}}
-                    className="object-contain"
-                  />
-                </div>
+                <Image
+                  key={`${tech.name}-${index}`}
+                  src={tech.icon}
+                  alt={tech.name}
+                  width={tech.width * 0.7}
+                  height={tech.height * 0.7}
+                  quality={100}
+                  className="object-contain"
+                />
               ))}
             </div>
           </div>
+
+          <p className="text-sm text-justify text-black">
+            {description}
+          </p>
         </div>
 
-        {/* Deskripsi */}
-        <p className='text-xs md:text-sm text-justify text-corvidian-1 leading-relaxed'>
-          {description}
-        </p>
-      </div>
-
-      {/* Portfolio Images Grid */}
-      <div className="flex flex-col gap-5 mb-12 px-8">
-        <h3 className="text-sm md:text-base font-semibold text-corvidian-1">
-          Galeri Portofolio
-        </h3>
-        
-        {/* Single Row of Images */}
-        <div className="flex flex-row gap-2 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
+        <div className="flex flex-col gap-3">
           {portfolioImages.map((image, index) => (
             <button
-              key={`portfolio-${index}`}
-              onClick={() => openModal(image.src, image.alt)}
-              className="rounded-lg overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-corvidian-3 bg-gray-50 flex-shrink-0"
+              key={`portfolio-mobile-${index}`}
+              onClick={() => openModal(image)}
+              className="w-full rounded overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-corvidian-3"
               aria-label={`Buka gambar portofolio ${image.alt || index}`}
               type="button"
             >
               <Image
                 src={image.src}
                 alt={image.alt}
-                width={image.width * 0.5}
-                height={image.height * 0.5}
-                style={{zIndex: 0}}
-                className="object-contain"
+                width={image.width}
+                height={image.height}
+                quality={100}
+                priority={index === 0}
+                className="object-contain w-full"
               />
             </button>
           ))}
         </div>
-        
-
       </div>
 
-      {/* Modal */}
-      {modalSrc && (
+      {modalImage && (
         <div
           role="dialog"
           aria-modal="true"
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm transition-opacity cursor-pointer"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md transition-opacity cursor-pointer"
           onClick={() => closeModal()}
         >
-          <div className="max-w-[95vw] max-h-[90vh] p-4">
-            <div className="w-full h-full rounded-lg shadow-2xl bg-transparent flex items-center justify-center">
-              <Image
-                src={modalSrc}
-                alt={modalAlt || 'Gambar portofolio'}
-                width={1000}
-                height={700}
-                style={{ objectFit: 'contain', maxWidth: '100%', maxHeight: '85vh' }}
-                className="rounded-lg"
-                priority
-              />
+          <div
+            className="max-w-[95vw] max-h-[90vh] p-4"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="w-full h-full rounded shadow-lg bg-transparent flex items-center justify-center relative overflow-hidden">
+              <div className="overflow-auto max-h-[85vh] max-w-[95vw] flex items-center justify-center">
+                <Image
+                  src={modalImage.src}
+                  alt={modalImage.alt || 'Gambar portofolio'}
+                  width={modalImage.modalWidth ?? modalImage.width}
+                  height={modalImage.modalHeight ?? modalImage.height}
+                  quality={100}
+                  priority
+                  className="rounded object-contain"
+                  style={{ 
+                    transform: `scale(${zoomLevel})`, 
+                    transformOrigin: 'center center' 
+                  }}
+                />
+              </div>
+              <div className="absolute bottom-4 right-4 flex gap-2">
+                <button
+                  type="button"
+                  aria-label="Perkecil gambar"
+                  onClick={() => adjustZoom(-0.25)}
+                  disabled={zoomLevel <= 1}
+                  className="px-3 py-2 rounded bg-white/80 text-black text-sm font-semibold shadow disabled:opacity-40"
+                >
+                  -
+                </button>
+                <button
+                  type="button"
+                  aria-label="Perbesar gambar"
+                  onClick={() => adjustZoom(0.25)}
+                  disabled={zoomLevel >= 3}
+                  className="px-3 py-2 rounded bg-white/80 text-black text-sm font-semibold shadow disabled:opacity-40"
+                >
+                  +
+                </button>
+              </div>
             </div>
-          </div>
-          
-          {/* Close hint text */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-            <p className="text-white text-xs bg-black/60 px-4 py-2 rounded-full backdrop-blur-sm">
-              Tap untuk menutup
-            </p>
           </div>
         </div>
       )}

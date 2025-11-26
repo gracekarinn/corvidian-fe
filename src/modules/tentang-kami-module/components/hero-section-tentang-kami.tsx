@@ -14,7 +14,7 @@ const HeroSectionTentangKami = () => {
                 </h1>
             </div>
             <div className="w-full md:w-1/2 md:text-end">
-                <p className='text-sm xl:text-[16px] 2xl:text-[18px] leading-relaxed md:leading-snug lg:max-w-md md:ml-auto'>
+                <p className='text-sm xl:text-[16px] 2xl:text-[18px] leading-relaxed md:leading-snug lg:max-w-md md:ml-auto font-medium'>
                   Ubah tantangan kompleks bisnis <br className="hidden sm:block" />
                   melalui solusi digital yang relevan, <br className="hidden sm:block" />
                   skalabel, dan berdampak nyata.

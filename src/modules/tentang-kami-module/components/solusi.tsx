@@ -47,7 +47,7 @@ const Solusi = () => {
           <span className="text-[#2A77BD] mx-1">Corvidian.</span>
           </h1>
           <div className="w-full lg:w-3/4">
-            <p className="text-xs md:text-sm lg:text-[14px] text-corvidian-1 max-lg:text-center">
+            <p className="text-xs md:text-sm lg:text-[14px] text-corvidian-1 max-lg:text-center font-medium">
               Kami rancang untuk menjawab tantangan dan mengubahnya menjadi
               peluang
             </p>

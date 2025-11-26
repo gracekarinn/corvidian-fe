@@ -33,7 +33,7 @@ const TimKami = () => {
             Tim Kami
           </h1>
           <div className="w-full lg:w-3/4 xl:w-2/3 flex flex-col gap-[20px]">
-            <p className="text-[12px] font-normal sm:text-[13px] md:text-[14px] lg:text-[14px] leading-relaxed max-lg:text-center max-lg:items-center">
+            <p className="text-[12px] font-medium sm:text-[13px] md:text-[14px] lg:text-[14px] leading-relaxed max-lg:text-center max-lg:items-center">
               Kami percaya inovasi terbaik lahir dari kolaborasi. Tim Corvidian
               bekerja lintas disiplin, menggabungkan insight bisnis, teknologi,
               dan kreativitas, untuk menciptakan solusi digital yang relevan,

@@ -43,7 +43,7 @@ const Timeline = () => {
                 <h3 className="text-base md:text-lg font-bold text-black mb-2">
                   {item.title}
                 </h3>
-                <p className="text-sm md:text-base text-gray-700 leading-relaxed text-justify pr-0 md:pr-8">
+                <p className="text-sm md:text-base font-medium text-corvidian-1 leading-relaxed text-justify pr-0 md:pr-8">
                   {item.description}
                 </p>
               </div>

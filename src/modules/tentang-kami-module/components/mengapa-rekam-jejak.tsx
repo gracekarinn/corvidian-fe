@@ -33,14 +33,14 @@ const MengapaRekamJejak = () => {
             Mengapa Kami Ada?
           </h1>
           <div className="w-full lg:w-3/4 flex flex-col gap-[15px] lg:gap-[20px]">
-            <p className="text-[14px] leading-relaxed">
+            <p className="text-[14px] leading-relaxed font-medium">
               Corvidian terinspirasi dari keluarga burung corvidae, hewan yang
               dikenal cerdas, adaptif, dan mampu memecahkan masalah secara
               strategis. Filosofi kami, Think Fast. Fly High., mencerminkan
               kemampuan berpikir cepat untuk menemukan solusi, serta visi untuk
               membantu bisnis terbang lebih tinggi.
             </p>
-            <p className="text-[14px] leading-relaxed">
+            <p className="text-[14px] leading-relaxed font-medium">
               Kami hadir untuk menjadikan teknologi sebagai pendukung, bukan
               penghalang, membantu bisnis tumbuh dengan solusi yang cerdas
               sekaligus praktis.

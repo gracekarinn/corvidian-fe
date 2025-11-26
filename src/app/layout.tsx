@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Toaster } from "sonner";
 import { Footer } from "@/components/Footer";
+import { Suspense } from "react";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -26,7 +27,9 @@ export default function RootLayout({
       <body
         className={`${plusJakartaSans.variable} font-sans antialiased overflow-x-hidden lg:pt-20 max-lg:pt-10`}
       >
-        <Navbar />
+        <Suspense fallback={null}>
+          <Navbar />
+        </Suspense>
         {children}
         <Toaster position="bottom-right" richColors />
         <Footer />

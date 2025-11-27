@@ -56,7 +56,7 @@ const HeroSectionSistemKami = () => {
         </div>
         
         {/* Card Grid Section */}
-        <div className="relative z-10 mt-[40px] lg:mt-[60px] mb-[80px] mx-[100px] lg:mb-[120px]">
+        <div className="relative z-10 mt-[80px] lg:mt-[60px] mb-[80px] mx-[100px] lg:mb-[120px]">
           <CardFull />
         </div>
 

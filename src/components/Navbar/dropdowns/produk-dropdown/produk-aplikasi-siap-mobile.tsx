@@ -13,19 +13,19 @@ const ProdukAplikasiSiapMobile = ({ onLinkClick }: ProdukAplikasiSiapMobileProps
       icon: "/navbar/produk/business-travel-system.png",
       title: "Operations & General",
       description: "Business Travel System",
-      link: "/aplikasi/business-travel"
+      link: "/sistem/businnes-trip"
     },
     {
       icon: "/navbar/produk/office-operations-system.png",
       title: "Operations & General",
       description: "Office Operations System",
-      link: "/aplikasi/office-operations"
+      link: "/sistem/officer-operations"
     },
     {
       icon: "/navbar/produk/document-print-management.png",
       title: "Operations & General",
       description: "Document Print Management System",
-      link: "/aplikasi/document-print"
+      link: "/sistem/dokumen-print"
     },
   ];
 
@@ -34,19 +34,19 @@ const ProdukAplikasiSiapMobile = ({ onLinkClick }: ProdukAplikasiSiapMobileProps
       icon: "/navbar/produk/timesheet-system.png",
       title: "Human Capital",
       description: "Timesheet System",
-      link: "/aplikasi/timesheet"
+      link: "/sistem/timesheet"
     },
     {
       icon: "/navbar/produk/recruitment-system.png",
       title: "Human Capital",
       description: "Recruitment System",
-      link: "/aplikasi/recruitment"
+      link: "/sistem/recruitment-system"
     },
     {
       icon: "/navbar/produk/human-capital-internal-system.png",
       title: "Human Capital",
       description: "Human Capital Internal System",
-      link: "/aplikasi/hr-internal"
+      link: "/sistem/human-capital"
     },
   ];
 
@@ -55,13 +55,13 @@ const ProdukAplikasiSiapMobile = ({ onLinkClick }: ProdukAplikasiSiapMobileProps
       icon: "/navbar/produk/project-management.png",
       title: "Information",
       description: "Project Management",
-      link: "/aplikasi/project-management"
+      link: "/sistem/project-management"
     },
     {
       icon: "/navbar/produk/library-system.png",
       title: "Information",
       description: "Library System",
-      link: "/aplikasi/library"
+      link: "/sistem/library-system"
     },
   ];
 
@@ -69,8 +69,8 @@ const ProdukAplikasiSiapMobile = ({ onLinkClick }: ProdukAplikasiSiapMobileProps
     {
       icon: "/navbar/produk/desain-sistem.png",
       title: "Design System",
-      description: "Design System",
-      link: "/aplikasi/design-system"
+      description: "E-Sign System",
+      link: "/sistem/e-sign"
     },
   ];
 
@@ -103,7 +103,7 @@ const ProdukAplikasiSiapMobile = ({ onLinkClick }: ProdukAplikasiSiapMobileProps
             <h3 className="text-[12px] font-bold leading-tight" style={{ color: '#0D99FF' }}>
               {service.title}
             </h3>
-            <p className="text-[12px] text-gray-700 leading-tight mt-1">
+            <p className="text-[12px] text-white leading-tight mt-1">
               {service.description}
             </p>
           </div>

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useRef, useState } from "react";
+import Link from "next/link";
 
 export const ProjectSlider = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -36,7 +37,8 @@ export const ProjectSlider = () => {
         onMouseLeave={handleMouseUp}
       >
         <div className="flex gap-6 pb-4">
-          <div className="w-[280px] flex-shrink-0">
+          {/* Card 1: Human Capital System */}
+          <Link href="/sistem/human-capital" className="w-[280px] flex-shrink-0">
             <div className="bg-[linear-gradient(360deg,#FFFFFF_0%,#C5CED5_100%)] rounded-3xl shadow-lg overflow-hidden relative h-[400px] flex items-end">
               <div className="absolute left-0 top-0 h-full">
                 <Image
@@ -63,9 +65,10 @@ export const ProjectSlider = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </Link>
 
-          <div className="w-[280px] flex-shrink-0">
+          {/* Card 2: Recruitment System */}
+          <Link href="/sistem/recruitment-system" className="w-[280px] flex-shrink-0">
             <div className="bg-[linear-gradient(198.08deg,#02C2B3_-19.55%,#1D1F26_17.7%,#1D1F26_46.65%,#1578CB_95.15%)] rounded-3xl shadow-lg overflow-hidden relative h-[400px]">
               <div className="absolute bottom-0 left-0 w-full h-[75%]">
                 <Image
@@ -88,9 +91,10 @@ export const ProjectSlider = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </Link>
 
-          <div className="w-[280px] flex-shrink-0">
+          {/* Card 3: Library System */}
+          <Link href="/sistem/library-system" className="w-[280px] flex-shrink-0">
             <div className="bg-[linear-gradient(90deg,#FFFFFF_0%,#C5CED5_100%)] rounded-3xl shadow-lg overflow-hidden relative h-[400px]">
               <div className="absolute top-0 left-0 w-full h-[55%]">
                 <Image
@@ -113,9 +117,10 @@ export const ProjectSlider = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </Link>
 
-          <div className="w-[280px] flex-shrink-0">
+          {/* Card 4: Project Management System */}
+          <Link href="/sistem/project-management" className="w-[280px] flex-shrink-0">
             <div className="bg-[linear-gradient(142.7deg,#02C2B3_-28.02%,#1D1F26_17.75%,#1D1F26_62.27%,#1578CB_124.5%)] rounded-3xl overflow-hidden relative h-[400px]">
               <div className="absolute bottom-0 left-0 w-full h-[70%]">
                 <Image
@@ -140,9 +145,10 @@ export const ProjectSlider = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </Link>
 
-          <div className="w-[280px] flex-shrink-0">
+          {/* Card 5: Timesheet System */}
+          <Link href="/sistem/timesheet" className="w-[280px] flex-shrink-0">
             <div className="bg-[linear-gradient(360deg,#FFFFFF_0%,#C5CED5_100%)] rounded-3xl overflow-hidden relative h-[400px]">
               <div className="absolute inset-0">
                 <Image
@@ -165,9 +171,10 @@ export const ProjectSlider = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </Link>
 
-          <div className="w-[280px] flex-shrink-0">
+          {/* Card 6: Lihat Semua */}
+          <Link href="/sistem-kami-siap-pakai" className="w-[280px] flex-shrink-0">
             <div className="bg-[linear-gradient(360deg,#FFFFFF_0%,#C5CED5_100%)] rounded-3xl overflow-hidden relative h-[400px]">
               <div className="p-8 flex flex-col h-full justify-center">
                 <p className="text-corvidian-1 text-sm mb-6">
@@ -178,7 +185,7 @@ export const ProjectSlider = () => {
                 </h3>
               </div>
             </div>
-          </div>
+          </Link>
 
           <div className="w-[50px] md:w-[240px] lg:w-[320px] flex-shrink-0" />
         </div>

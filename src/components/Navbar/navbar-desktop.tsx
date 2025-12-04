@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -19,14 +19,19 @@ export const NavbarDesktop = ({ articles }: Props) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
+  const previousPathname = useRef(pathname);
 
   const handleDropdownToggle = (dropdown: ActiveDropdown) => {
     setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
   };
 
+  const handleClose = useCallback(() => {
+    setActiveDropdown(null);
+  }, []);
+
   const dropdownConfigs = {
-    produk: { width: 1000, content: <ProdukDropdown onLinkClick={() => setActiveDropdown(null)} /> },
-    wawasan: { width: 760, content: <WawasanDropdown articles={articles} onLinkClick={() => setActiveDropdown(null)} /> },
+    produk: { width: 1000, content: <ProdukDropdown onLinkClick={handleClose} /> },
+    wawasan: { width: 760, content: <WawasanDropdown articles={articles} onLinkClick={handleClose} /> },
   };
 
   const currentConfig = activeDropdown ? dropdownConfigs[activeDropdown] : null;
@@ -44,6 +49,14 @@ export const NavbarDesktop = ({ articles }: Props) => {
       );
     }
   }, [searchParams, pathname, router]);
+
+  useEffect(() => {
+    const hasPathChanged = previousPathname.current !== pathname;
+    if (hasPathChanged && activeDropdown) {
+      handleClose();
+    }
+    previousPathname.current = pathname;
+  }, [pathname, activeDropdown, handleClose]);
 
   return (
     <>
@@ -67,7 +80,7 @@ export const NavbarDesktop = ({ articles }: Props) => {
         className="fixed top-0 left-0 right-0 z-50 flex justify-center"
       >
         <div className="w-full max-w-[1512px] px-20 py-8 flex justify-between items-center bg-[#FFFFFF1A] backdrop-blur-lg">
-          <Link href="/">
+          <Link href="/" onClick={handleClose}>
             <Image
               src="/navbar/navbar.png"
               alt="Corvidian Logo"

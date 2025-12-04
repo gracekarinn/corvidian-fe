@@ -10,7 +10,7 @@ const CaraKamiBekerja = () => {
               Cara Kami Bekerja
             </h1>
             <p className="text-[14px] font-medium text-black leading-relaxed max-lg:text-center">
-              Kami percaya inovasi terbaik lahir dari kolaborasi. Tim Corvidian bekerja lintas disiplin, menggabungkan insight bisnis, teknologi, dan kreativitas, untuk menciptakan solusi digital yang relevan, berkelanjutan, dan mudah diadaptasi.
+              Bagi Corvidian, Think Fast, Fly High bukan sekedar jargon, melainkan landasan cara kami berpikir, mengambil keputusan, dan memberikan solusi.
             </p>
           </div>
           <div>

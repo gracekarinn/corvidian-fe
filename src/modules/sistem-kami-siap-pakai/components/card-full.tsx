@@ -7,7 +7,7 @@ const CardFull = () => {
     <section className="w-full px-6 lg:px-8">
       <div className="max-w-[1500px] mx-auto">
         {/* Mobile: justify-center, Desktop: justify-start */}
-        <div className="flex flex-wrap gap-10 justify-center lg:justify-start">
+        <div className="flex flex-wrap gap-10 justify-between w-full">
           {/* Card 1: Human Capital */}
           <Link href="/sistem/human-capital" className="w-[280px] flex-shrink-0">
             <div className="bg-[linear-gradient(360deg,#FFFFFF_0%,#C5CED5_100%)] rounded-3xl shadow-lg overflow-hidden relative h-[500px] flex items-end hover:scale-105 transition-transform duration-300">

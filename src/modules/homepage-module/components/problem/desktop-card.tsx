@@ -72,7 +72,7 @@ export const DesktopCard = () => {
         </div>
       </Link>
 
-      <div className="bg-[linear-gradient(18.73deg,#02C2B3_-3.23%,#1D1F26_13.72%,#1D1F26_45.09%,#1578CB_88.93%)] rounded-3xl overflow-hidden">
+      <Link href="/sistem-kami-siap-pakai" className="bg-[linear-gradient(18.73deg,#02C2B3_-3.23%,#1D1F26_13.72%,#1D1F26_45.09%,#1578CB_88.93%)] rounded-3xl overflow-hidden">
         <div className="relative h-full max-h-[480px] flex flex-col">
           <Image
             src="/hero/gradien-biru.png"
@@ -96,7 +96,7 @@ export const DesktopCard = () => {
             </p>
           </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 };

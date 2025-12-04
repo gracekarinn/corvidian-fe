@@ -78,6 +78,7 @@ export const NavbarDesktop = ({ articles }: Props) => {
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
         className="fixed top-0 left-0 right-0 z-50 flex justify-center"
+        data-navbar
       >
         <div className="w-full max-w-[1512px] px-20 py-8 flex justify-between items-center bg-[#FFFFFF1A] backdrop-blur-lg">
           <Link href="/" onClick={handleClose}>

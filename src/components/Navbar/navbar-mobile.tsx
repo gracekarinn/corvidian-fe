@@ -61,6 +61,7 @@ export const NavbarMobile = ({ articles = [] }: NavbarMobileProps) => {
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
         className="fixed w-screen top-0 left-0 right-0 z-50 bg-white rounded-b-2xl overflow-hidden"
+        data-navbar
       >
         <div className="px-6 py-4 flex justify-between items-center">
           <Link href="/" className="flex items-center">

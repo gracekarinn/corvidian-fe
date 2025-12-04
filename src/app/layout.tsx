@@ -5,6 +5,7 @@ import { Navbar } from "@/components/Navbar";
 import { Toaster } from "sonner";
 import { Footer } from "@/components/Footer";
 import { Suspense } from "react";
+import { ScrollToTop } from "@/components/ScrollToTop";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -30,6 +31,7 @@ export default function RootLayout({
         <Suspense fallback={null}>
           <Navbar />
         </Suspense>
+        <ScrollToTop />
         {children}
         <Toaster position="bottom-right" richColors />
         <Footer />

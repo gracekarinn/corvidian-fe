@@ -13,18 +13,41 @@ interface ProdukSolusiLayananProps {
 const ProdukSolusiLayanan = ({ onLinkClick }: ProdukSolusiLayananProps) => {
   const router = useRouter()
 
+  const scrollToHashWithOffset = (hash: string) => {
+    const element = document.getElementById(hash)
+    if (!element) return
+
+    const navbarHeight = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-navbar]")
+    ).reduce((max, el) => {
+      const height = el.getBoundingClientRect().height
+      return height > max ? height : max
+    }, 0)
+    const top = element.getBoundingClientRect().top + window.scrollY - navbarHeight - 8
+
+    window.scrollTo({
+      top: Math.max(top, 0),
+      left: 0,
+      behavior: "smooth",
+    })
+  }
+
   const handleNavClick = (href: string) => (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault()
     onLinkClick?.()
     const [path, hash] = href.split('#')
     const currentPath = typeof window !== 'undefined' ? window.location.pathname : ''
+    const shouldScrollToTop = currentPath !== path || !hash
 
-    // navigate to path (no scroll) then force hash update so same-page clicks retrigger
-    router.push(href, { scroll: false })
+    router.push(href, { scroll: shouldScrollToTop })
 
     if (hash && currentPath === path) {
       requestAnimationFrame(() => {
-        window.location.hash = hash
+        if (document.getElementById(hash)) {
+          scrollToHashWithOffset(hash)
+        } else {
+          window.location.hash = hash
+        }
         window.dispatchEvent(new HashChangeEvent('hashchange'))
       })
     }

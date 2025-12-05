@@ -65,7 +65,7 @@ export const MobileCard = () => {
           </span>
         </Link>
 
-        <div
+        <Link href="/sistem-kami-siap-pakai"
           className="bg-[linear-gradient(18.73deg,#02C2B3_-3.23%,#1D1F26_13.72%,#1D1F26_45.09%,#1578CB_88.93%)] rounded-3xl flex flex-col justify-between overflow-hidden max-h-[304px]"
         >
           <Image
@@ -93,7 +93,7 @@ export const MobileCard = () => {
               Pelajari lebih lanjut
             </Link>
           </div>
-        </div>
+        </Link>
       </div>
     </div>
   );

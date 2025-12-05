@@ -198,7 +198,7 @@ const PortofolioTemplate: React.FC<PortofolioTemplateProps> = ({
             onClick={(event) => event.stopPropagation()}
           >
             <div className="w-full h-full rounded shadow-lg bg-transparent flex items-center justify-center relative overflow-hidden">
-              <div className="overflow-auto max-h-[80vh] max-w-[90vw] flex items-center justify-center">
+              <div className="overflow-hidden max-h-[80vh] max-w-[90vw] flex items-center justify-center">
                 <Image
                   src={modalImage.src}
                   alt={modalImage.alt || 'Gambar portofolio'}
@@ -206,7 +206,7 @@ const PortofolioTemplate: React.FC<PortofolioTemplateProps> = ({
                   height={modalImage.modalHeight ?? modalImage.height}
                   quality={100}
                   priority
-                  className="rounded object-contain"
+                  className="rounded object-contain max-h-[80vh] max-w-[90vw]"
                   style={{ 
                     transform: `scale(${zoomLevel})`, 
                     transformOrigin: 'center center' 
